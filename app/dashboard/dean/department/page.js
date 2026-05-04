@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import {
   Home, BookOpen, Bell, BarChart2, Users, CheckCircle,
   MessageCircle, FileText, Settings, LogOut, Search, ChevronDown,
-  TrendingUp, Download, PieChart, Lightbulb, Users2, Building, Cpu
+  TrendingUp, Download, PieChart, Lightbulb, Users2, Building, Cpu, Brain
 } from 'lucide-react'
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer, Cell,
@@ -18,6 +18,7 @@ const navLinks = [
   { id: 'cross-branch',label: 'Cross-Branch Insights',icon: FileText,  path: '/dashboard/dean/cross-branch' },
   { id: 'faculty',     label: 'Faculty Analytics',    icon: Users2,    path: '/dashboard/dean/faculty-performance' },
   { id: 'curriculum',  label: 'Curriculum Gaps',      icon: Lightbulb, path: '/dashboard/dean/curriculum' },
+  { id: 'student-intelligence', label: 'Student Intelligence', icon: Brain,    path: '/dashboard/dean/student-intelligence' },
   { id: 'policy-simulation', label: 'Policy Simulation', icon: Cpu,      path: '/dashboard/dean/policy-simulation' },
   { id: 'reports',     label: 'Reports',              icon: FileText,  path: '/dashboard/dean/reports' },
 ]

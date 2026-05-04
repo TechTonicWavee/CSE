@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import {
   Home, Layout, Star, TrendingUp, Book, Cpu, Award, GitBranch,
   Settings, LogOut, Search, ChevronDown, Bell, Users, Activity,
-  Briefcase, AlertTriangle, ArrowUpRight, ExternalLink
+  Briefcase, AlertTriangle, ArrowUpRight, ExternalLink, Brain
 } from 'lucide-react'
 
 const navLinks = [
@@ -15,6 +15,7 @@ const navLinks = [
   { id: 'cohort',       label: 'Cohort Forecasting',   icon: TrendingUp,path: '/dashboard/dean/forecasting' },
   { id: 'curriculum',   label: 'Curriculum Analysis',  icon: Book,     path: '/dashboard/dean/curriculum' },
   { id: 'policy',       label: 'Policy Simulation',    icon: Cpu,      path: '/dashboard/dean/policy-simulation' },
+  { id: 'student-intelligence', label: 'Student Intelligence', icon: Brain,    path: '/dashboard/dean/student-intelligence' },
   { id: 'accreditation',label: 'Reports',              icon: Award,    path: '/dashboard/dean/reports' },
   { id: 'branch',       label: 'Cross-Branch Insights',icon: GitBranch,path: '/dashboard/dean/cross-branch' },
 ]
