@@ -804,7 +804,7 @@ export default function FacultyStudentProfile() {
 
                   {/* Resolved Alerts */}
                   <div className="pt-6 border-t border-gray-200">
-                    <h3 className="text-lg font-bold text-navy mb-4 flex items-center gap-2 text-gray-400">
+                    <h3 className="text-lg font-bold mb-4 flex items-center gap-2 text-gray-400">
                       <CheckCircle2 size={18} />
                       Resolved Alerts
                     </h3>
@@ -820,7 +820,7 @@ export default function FacultyStudentProfile() {
                             <span className="text-xs text-gray-500 font-bold">Generated: 1 Mar 2026</span>
                             <span className="text-xs font-bold text-green-600">Resolved: 5 Mar</span>
                           </div>
-                          <h4 className="font-bold text-navy text-sm mb-3 line-through text-gray-500">DBMS Assignment 2 Submitted Late</h4>
+                          <h4 className="font-bold text-sm mb-3 line-through text-gray-500">DBMS Assignment 2 Submitted Late</h4>
                           
                           <div className="bg-gray-50 p-3 rounded-lg border border-gray-100 mb-2">
                             <p className="text-xs font-bold text-gray-500 mb-1">Action taken:</p>
@@ -842,7 +842,7 @@ export default function FacultyStudentProfile() {
                             <span className="text-xs text-gray-500 font-bold">Generated: 15 Feb 2026</span>
                             <span className="text-xs font-bold text-green-600">Resolved: 28 Feb</span>
                           </div>
-                          <h4 className="font-bold text-navy text-sm mb-3 line-through text-gray-500">Attendance Warning — OS 73%</h4>
+                          <h4 className="font-bold text-sm mb-3 line-through text-gray-500">Attendance Warning — OS 73%</h4>
                           
                           <div className="bg-gray-50 p-3 rounded-lg border border-gray-100 mb-2">
                             <p className="text-xs font-bold text-gray-500 mb-1">Action taken:</p>

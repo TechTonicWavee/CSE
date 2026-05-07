@@ -216,7 +216,7 @@ export default function FacultyParentCommunication() {
                     </div>
                     <p className="text-xs text-gray-500 mb-2">Mahesh Singh A· 2CS04</p>
                     <div className="flex justify-between items-end gap-4">
-                      <p className="text-sm text-gray-700 truncate flex-1 font-medium text-navy">"Thank you for the update. We will make sure he..."</p>
+                      <p className="text-sm truncate flex-1 font-medium text-navy">"Thank you for the update. We will make sure he..."</p>
                       <span className="flex items-center justify-center bg-blue-600 text-white text-[10px] font-bold w-5 h-5 rounded-full shrink-0">2</span>
                     </div>
                   </div>
@@ -232,7 +232,7 @@ export default function FacultyParentCommunication() {
                     </div>
                     <p className="text-xs text-gray-500 mb-2">Rohit Sharma A· 2CS47</p>
                     <div className="flex justify-between items-end gap-4">
-                      <p className="text-sm text-gray-600 truncate flex-1 font-medium text-navy">"Is there any way to improve his DBMS scores before..."</p>
+                      <p className="text-sm truncate flex-1 font-medium text-navy">"Is there any way to improve his DBMS scores before..."</p>
                       <span className="flex items-center justify-center bg-blue-600 text-white text-[10px] font-bold w-5 h-5 rounded-full shrink-0">1</span>
                     </div>
                   </div>
@@ -532,7 +532,7 @@ export default function FacultyParentCommunication() {
                     </div>
 
                     {/* Meeting 3 */}
-                    <div className="border border-teal-200 border-2 rounded-xl p-5 shadow-md bg-white">
+                    <div className="border-2 border-teal-200 rounded-xl p-5 shadow-md bg-white">
                       <div className="flex justify-between items-start mb-3">
                         <span className="px-2.5 py-1 bg-green-100 text-green-700 font-bold text-[10px] uppercase rounded border border-green-200">Confirmed</span>
                         <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center"><Video size={14} /></div>

@@ -46,7 +46,7 @@ function CountUp({ to, duration = 800, suffix = '' }) {
       if (p < 1) requestAnimationFrame(step)
     }
     requestAnimationFrame(step)
-  }, [to])
+  }, [to, duration])
   return <>{val}{suffix}</>
 }
 

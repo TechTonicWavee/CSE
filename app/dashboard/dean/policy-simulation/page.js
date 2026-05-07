@@ -204,7 +204,7 @@ function AnimatedNumber({ value, decimals = 1, duration = 900 }) {
       if (progress < 1) requestAnimationFrame(step)
     }
     requestAnimationFrame(step)
-  }, [value])
+  }, [value, decimals, duration])
   return <>{display}</>
 }
 

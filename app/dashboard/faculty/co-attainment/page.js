@@ -508,12 +508,12 @@ export default function FacultyCOAttainment() {
               </div>
 
               <div className="mb-5">
-                <label className="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2"><Calendar size={16} /> Session Date</label>
+                <label className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2"><Calendar size={16} /> Session Date</label>
                 <input type="date" className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-700" required defaultValue="2026-04-18" />
               </div>
 
               <div className="mb-8">
-                <label className="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2"><Clock size={16} /> Duration</label>
+                <label className="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2"><Clock size={16} /> Duration</label>
                 <div className="grid grid-cols-2 gap-3">
                   <label className="flex items-center justify-center p-3 border border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50 has-[:checked]:text-blue-700 font-medium text-sm transition">
                     <input type="radio" name="duration" className="hidden" defaultChecked />
