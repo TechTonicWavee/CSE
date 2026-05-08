@@ -67,47 +67,8 @@ export default function YearwiseInsights() {
   const sendRecommendation = (e) => { e.preventDefault(); setIsModalOpen(false); showToast('Recommendation sent') }
 
   return (
-    <div className="flex h-screen bg-bg-base overflow-hidden font-sans relative">
-      <aside className={`${sidebarOpen ? 'w-64' : 'w-0 overflow-hidden'} flex-shrink-0 bg-white border-r border-gray-100 flex flex-col transition-all duration-300 shadow-xl z-20`}>
-        <div className="p-5 border-b border-gray-100">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-navy font-bold text-sm bg-gray-200">VS</div>
-            <div className="overflow-hidden">
-              <p className="font-semibold text-sm text-navy truncate">Dr. Vineet Sharma</p>
-              <p className="text-xs text-gray-500 truncate">Head of Department · CSE</p>
-            </div>
-          </div>
-        </div>
-        <nav className="flex-1 p-3 overflow-y-auto">
-          {navLinks.map(link => (
-            <button key={link.id} onClick={() => router.push(link.path)} className={`nav-link w-full text-left mb-0.5 ${link.active ? 'bg-purple-50 text-purple-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-navy'}`}>
-              <link.icon size={17} />
-              <span className="flex-1">{link.label}</span>
-            </button>
-          ))}
-        </nav>
-      </aside>
-
-      <div className="flex-1 flex flex-col overflow-hidden relative">
-        <header className="bg-white border-b border-gray-100 px-6 py-3 flex items-center gap-4 flex-shrink-0 shadow-sm z-10">
-          <button onClick={() => setSidebarOpen(v => !v)} className="text-gray-400 hover:text-gray-700 transition"><Settings size={20} /></button>
-          <div className="flex items-center gap-2 mr-4">
-            <div className="w-7 h-7 rounded-md flex items-center justify-center text-white font-bold text-xs" style={{ background: '#5B21B6' }}>EA</div>
-            <span className="font-bold text-navy text-sm hidden sm:block">Educator Analytics OS</span>
-          </div>
-          <div className="flex-1 max-w-md relative">
-            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-            <input type="text" placeholder="Search year-wise insights..." className="w-full pl-9 pr-4 py-2 text-sm rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-100 focus:border-purple-300 transition" />
-          </div>
-          <div className="flex-1" />
-          <button className="relative p-2 rounded-lg hover:bg-gray-100 transition text-gray-500"><Bell size={19} /></button>
-          <div className="flex items-center gap-2 cursor-pointer group">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-navy font-bold text-xs bg-gray-200">VS</div>
-            <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
-          </div>
-        </header>
-
-        <main className="flex-1 overflow-y-auto bg-gray-50/50">
+    <>
+    <main className="px-8 py-8">
           <div className="max-w-[1400px] mx-auto p-6 md:p-8 animate-fade-in space-y-8 pb-20">
 
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
@@ -281,7 +242,6 @@ export default function YearwiseInsights() {
 
           </div>
         </main>
-      </div>
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-navy/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
@@ -313,6 +273,6 @@ export default function YearwiseInsights() {
           <CheckCircle2 size={16} className="text-green-400" /> {toastMessage}
         </div>
       )}
-    </div>
+    </>
   )
 }

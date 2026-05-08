@@ -542,103 +542,7 @@ export default function PolicySimulation() {
     : [];
 
   return (
-    <div className="flex h-screen bg-[#F3F4F6] overflow-hidden font-sans">
-      {/* ── SIDEBAR ─────────────────────────────────────────────────────────── */}
-      <aside
-        className={`${sidebarOpen ? "w-64" : "w-0 overflow-hidden"} flex-shrink-0 bg-white border-r border-gray-100 flex flex-col transition-all duration-300 shadow-sm`}
-      >
-        <div className="p-5 border-b border-gray-50">
-          <div className="flex items-center gap-3">
-            <div
-              className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-              style={{ background: "#4338CA" }}
-            >
-              VS
-            </div>
-            <div>
-              <p className="font-semibold text-sm text-[#0D1B2A] truncate">
-                Dr. Vineet Sharma
-              </p>
-              <p className="text-xs text-gray-500 truncate">
-                Head of Department · CSE
-              </p>
-            </div>
-          </div>
-        </div>
-        <nav className="flex-1 p-3 overflow-y-auto">
-          {navLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => router.push(link.path)}
-              className={`nav-link w-full text-left mb-0.5 ${link.id === "policy-simulation" ? "bg-purple-50 text-purple-700 font-semibold" : ""}`}
-            >
-              <link.icon size={17} />
-              <span className="flex-1">{link.label}</span>
-            </button>
-          ))}
-        </nav>
-        <div className="p-3 border-t border-gray-50">
-          <button
-            onClick={() => router.push("/login")}
-            className="nav-link w-full text-left text-red-500 hover:bg-red-50 hover:text-red-600"
-          >
-            <LogOut size={17} />
-            <span>Switch Role</span>
-          </button>
-        </div>
-      </aside>
-
-      {/* ── MAIN ────────────────────────────────────────────────────────────── */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
-        <header className="bg-white border-b border-gray-100 px-6 py-3 flex items-center gap-4 flex-shrink-0 shadow-sm">
-          <button
-            onClick={() => setSidebarOpen((v) => !v)}
-            className="text-gray-400 hover:text-gray-700 transition"
-          >
-            <Settings size={20} />
-          </button>
-          <div className="flex items-center gap-2 mr-4">
-            <div
-              className="w-7 h-7 rounded-md flex items-center justify-center text-white font-bold text-xs"
-              style={{ background: "#5B21B6" }}
-            >
-              EA
-            </div>
-            <span className="font-bold text-[#0D1B2A] text-sm hidden sm:block">
-              Educator Analytics OS
-            </span>
-          </div>
-          <div className="flex-1 max-w-md relative">
-            <Search
-              size={15}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-            />
-            <input
-              type="text"
-              placeholder="Search policies, scenarios..."
-              className="w-full pl-9 pr-4 py-2 text-sm rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-100 focus:border-purple-300 transition"
-            />
-          </div>
-          <div className="flex-1" />
-          <button className="relative p-2 rounded-lg hover:bg-gray-100 transition text-gray-500">
-            <Bell size={19} />
-            <span className="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">
-              2
-            </span>
-          </button>
-          <div className="flex items-center gap-2 cursor-pointer">
-            <div
-              className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs"
-              style={{ background: "#4338CA" }}
-            >
-              VS
-            </div>
-            <ChevronDown size={14} className="text-gray-400" />
-          </div>
-        </header>
-
-        <main className="flex-1 overflow-y-auto p-6">
+    <main className="px-8 py-8">
           <div className="max-w-7xl mx-auto space-y-6 pb-10">
             {/* Page Title */}
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 animate-fade-in">
@@ -1516,7 +1420,5 @@ export default function PolicySimulation() {
             </div>
           </div>
         </main>
-      </div>
-    </div>
   );
 }
