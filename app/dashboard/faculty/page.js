@@ -222,7 +222,7 @@ export default function FacultyDashboard() {
             </div>
             <div className="overflow-hidden">
               <p className="font-semibold text-sm text-navy truncate">
-                Prof. Priya Kapoor
+                Prof. Pushpendra Kumar
               </p>
               <p className="text-xs text-gray-500 truncate">
                 CSE Department · 4 Subjects
@@ -325,10 +325,10 @@ export default function FacultyDashboard() {
         <main className="flex-1 overflow-y-auto p-6">
           <div className="mb-6 animate-fade-in">
             <h1 className="text-2xl font-bold text-navy">
-              Good morning, Prof. Kapoor
+              Good morning, Prof. Pushpendra Kumar
             </h1>
             <p className="text-gray-500 text-sm mt-1">
-              Tuesday, 15 April 2026 — You have 2 classes today
+              Friday, 9 May 2026 — You have 2 classes today
             </p>
           </div>
 
@@ -509,8 +509,8 @@ export default function FacultyDashboard() {
                       new grades posted today
                     </li>
                   </ul>
-                  <button className="mt-4 text-[10px] font-black text-orange-600 uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">
-                    View All Assignments <ChevronRight size={12} />
+                  <button onClick={() => window.open('http://lms.kiet.edu/moodle/', '_blank')} className="mt-4 text-[10px] font-black text-orange-600 uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">
+                    Open Moodle LMS <ChevronRight size={12} />
                   </button>
                 </div>
               </div>
@@ -543,8 +543,8 @@ export default function FacultyDashboard() {
                       Today's classes: 2 marked, 1 pending
                     </li>
                   </ul>
-                  <button className="mt-4 text-[10px] font-black text-teal-600 uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">
-                    View Attendance <ChevronRight size={12} />
+                  <button onClick={() => window.open('https://kiet.cybervidya.net', '_blank')} className="mt-4 text-[10px] font-black text-teal-600 uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">
+                    Open Cyber Vidya <ChevronRight size={12} />
                   </button>
                 </div>
               </div>

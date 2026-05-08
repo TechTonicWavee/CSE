@@ -161,12 +161,27 @@ const radarData = [
   { subject: "Technical", A: 78, fullMark: 100 },
 ];
 
+const STUDENT_LIST = [
+  { name: 'Siddharth Rao',  initials: 'SR', roll: '2CS38', section: 'B', spi: 94, att: 92, rank: 1,  subject: 'DBMS',  status: 'Strong',   statusColor: 'bg-green-100 text-green-700' },
+  { name: 'Ananya Verma',   initials: 'AV', roll: '2CS07', section: 'A', spi: 89, att: 88, rank: 2,  subject: 'DBMS',  status: 'Strong',   statusColor: 'bg-green-100 text-green-700' },
+  { name: 'Aryan Mehta',    initials: 'AM', roll: '2CS41', section: 'B', spi: 86, att: 90, rank: 3,  subject: 'DBMS',  status: 'Strong',   statusColor: 'bg-green-100 text-green-700' },
+  { name: 'Priya Sharma',   initials: 'PS', roll: '2CS18', section: 'A', spi: 83, att: 85, rank: 4,  subject: 'OS',    status: 'On Track', statusColor: 'bg-blue-100 text-blue-700'  },
+  { name: 'Priyanshu Raj',  initials: 'PR', roll: '2CS04', section: 'C', spi: 71, att: 86, rank: 5,  subject: 'TOC',   status: 'On Track', statusColor: 'bg-blue-100 text-blue-700'  },
+  { name: 'Mahesh Singh',   initials: 'MS', roll: '2CS22', section: 'B', spi: 72, att: 79, rank: 34, subject: 'DBMS',  status: 'On Track', statusColor: 'bg-blue-100 text-blue-700'  },
+  { name: 'Neha Joshi',     initials: 'NJ', roll: '2CS33', section: 'A', spi: 66, att: 80, rank: 7,  subject: 'OS',    status: 'Watch',    statusColor: 'bg-amber-100 text-amber-700'},
+  { name: 'Divya Patel',    initials: 'DP', roll: '2CS14', section: 'C', spi: 63, att: 78, rank: 8,  subject: 'DBMS',  status: 'Watch',    statusColor: 'bg-amber-100 text-amber-700'},
+  { name: 'Karan Joshi',    initials: 'KJ', roll: '2CS15', section: 'B', spi: 59, att: 74, rank: 9,  subject: 'TOC',   status: 'At Risk',  statusColor: 'bg-red-100 text-red-700'   },
+  { name: 'Rohit Sharma',   initials: 'RS', roll: '2CS47', section: 'A', spi: 54, att: 71, rank: 10, subject: 'DBMS',  status: 'At Risk',  statusColor: 'bg-red-100 text-red-700'   },
+  { name: 'Sneha Patel',    initials: 'SP', roll: '2CS23', section: 'C', spi: 47, att: 68, rank: 11, subject: 'OS',    status: 'Critical', statusColor: 'bg-red-500 text-white'     },
+];
+
 export default function FacultyStudentProfile() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("Overview");
   const [activeNav, setActiveNav] = useState("profiles");
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [toastMessage, setToastMessage] = useState(null);
+  const [selectedStudent, setSelectedStudent] = useState(null);
 
   // Modals state
   const [isNoteModalOpen, setIsNoteModalOpen] = useState(false);
@@ -214,7 +229,7 @@ export default function FacultyStudentProfile() {
             </div>
             <div className="overflow-hidden">
               <p className="font-semibold text-sm text-navy truncate">
-                Prof. Priya Kapoor
+                Prof. Pushpendra Kumar
               </p>
               <p className="text-xs text-gray-500 truncate">
                 CSE Department · 4 Subjects
@@ -324,14 +339,62 @@ export default function FacultyStudentProfile() {
 
         {/* PAGE BODY */}
         <main className="flex-1 overflow-y-auto bg-gray-50/50">
+          {!selectedStudent ? (
+            <div className="max-w-5xl mx-auto p-6 md:p-8 animate-fade-in pb-20">
+              <div className="mb-6">
+                <h1 className="text-2xl font-bold text-navy">Student Profiles</h1>
+                <p className="text-gray-500 text-sm mt-1">Select a student to view their detailed analytics and profile</p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {STUDENT_LIST.map((st, idx) => (
+                  <button key={idx} onClick={() => setSelectedStudent(st)}
+                    className="card text-left hover:border-teal-200 hover:shadow-md transition-all group animate-fade-in"
+                    style={{ animationDelay: `${idx * 0.04}s` }}>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
+                        style={{ background: 'linear-gradient(135deg, #0F766E, #047857)' }}>
+                        {st.initials}
+                      </div>
+                      <div className="flex-1">
+                        <p className="font-bold text-navy text-sm">{st.name}</p>
+                        <p className="text-xs text-gray-500">{st.roll} · Sec {st.section} · {st.subject}</p>
+                      </div>
+                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${st.statusColor}`}>{st.status}</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 text-center">
+                      <div>
+                        <p className="text-xl font-black text-navy">{st.spi}</p>
+                        <p className="text-[10px] text-gray-500 uppercase font-semibold">SPI</p>
+                      </div>
+                      <div>
+                        <p className={`text-xl font-black ${st.att < 75 ? 'text-red-600' : 'text-navy'}`}>{st.att}%</p>
+                        <p className="text-[10px] text-gray-500 uppercase font-semibold">Attend</p>
+                      </div>
+                      <div>
+                        <p className="text-xl font-black text-navy">#{st.rank}</p>
+                        <p className="text-[10px] text-gray-500 uppercase font-semibold">Rank</p>
+                      </div>
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-gray-50 flex items-center gap-3">
+                      <div className="flex-1 bg-gray-100 rounded-full h-1.5 overflow-hidden">
+                        <div className={`h-1.5 rounded-full transition-all duration-700 ${st.spi >= 75 ? 'bg-teal-500' : st.spi >= 60 ? 'bg-amber-500' : 'bg-red-500'}`}
+                          style={{ width: `${st.spi}%` }} />
+                      </div>
+                      <span className="text-xs font-bold text-teal-600 group-hover:underline whitespace-nowrap">View →</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : (
           <div className="max-w-[1400px] mx-auto p-6 md:p-8 animate-fade-in space-y-6 pb-20">
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <button
-                onClick={() => router.push("/dashboard/faculty/analytics")}
+                onClick={() => setSelectedStudent(null)}
                 className="text-gray-500 font-medium text-sm flex items-center gap-2 hover:text-navy transition"
               >
-                <ArrowLeft size={16} /> Back to Subject Analytics
+                <ArrowLeft size={16} /> Back to Student List
               </button>
               <div className="flex gap-3">
                 <button
@@ -363,7 +426,7 @@ export default function FacultyStudentProfile() {
                   </div>
                   <div className="min-w-0">
                     <h1 className="text-xl font-bold text-navy truncate">
-                      Mahesh Singh
+                      {selectedStudent?.name ?? 'Mahesh Singh'}
                     </h1>
                     <p className="text-gray-500 text-sm mt-1">
                       CSE · 2nd Year · Section B · Roll No: 2CS04
@@ -499,7 +562,7 @@ export default function FacultyStudentProfile() {
                   <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
                     <div className="p-5 border-b border-gray-100">
                       <h3 className="font-bold text-navy">
-                        Mahesh's Performance in Prof. Kapoor's Subjects
+                        {(selectedStudent?.name ?? 'Mahesh').split(' ')[0]}'s Performance in Prof. Pushpendra Kumar's Subjects
                       </h3>
                     </div>
                     <div className="p-5 space-y-4">
@@ -1135,7 +1198,7 @@ export default function FacultyStudentProfile() {
                           {/* Faculty Section */}
                           <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 mt-2">
                             <p className="text-xs font-bold text-gray-500 uppercase mb-2 flex items-center gap-2">
-                              Faculty Rating by: Prof. Priya Kapoor
+                              Faculty Rating by: Prof. Pushpendra Kumar
                             </p>
                             <div className="flex gap-1 mb-2 text-amber-500">
                               <Star size={14} fill="currentColor" />
@@ -1290,7 +1353,7 @@ export default function FacultyStudentProfile() {
                       <div className="flex justify-between items-start mb-2">
                         <div className="flex items-center gap-2">
                           <span className="font-bold text-navy text-sm">
-                            Prof. Priya Kapoor
+                            Prof. Pushpendra Kumar
                           </span>
                           <span className="text-xs text-gray-500">
                             · 5 Apr 2026
@@ -1321,7 +1384,7 @@ export default function FacultyStudentProfile() {
                       <div className="flex justify-between items-start mb-2">
                         <div className="flex items-center gap-2">
                           <span className="font-bold text-navy text-sm">
-                            Prof. Priya Kapoor
+                            Prof. Pushpendra Kumar
                           </span>
                           <span className="text-xs text-gray-500">
                             · 20 Mar 2026
@@ -1527,6 +1590,7 @@ export default function FacultyStudentProfile() {
               )}
             </div>
           </div>
+          )}
         </main>
       </div>
 

@@ -98,7 +98,7 @@ export default function FacultyDashboard() {
               PK
             </div>
             <div className="overflow-hidden">
-              <p className="font-semibold text-sm text-navy truncate">Prof. Priya Kapoor</p>
+              <p className="font-semibold text-sm text-navy truncate">Prof. Pushpendra Kumar</p>
               <p className="text-xs text-gray-500 truncate">CSE Department · 4 Subjects</p>
             </div>
           </div>

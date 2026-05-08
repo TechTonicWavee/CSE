@@ -15,8 +15,8 @@ const navLinks = [
   { id: 'co',         label: 'CO Attainment',    icon: CheckCircle,badge: null,  active: false, path: '/dashboard/faculty/co-attainment' },
   { id: 'parent',     label: 'Parent Communication', icon: MessageCircle, badge: null, active: false, path: '/dashboard/faculty/parent-communication' },
   { id: 'reports',    label: 'Reports',          icon: FileText,   badge: null,  active: false, path: '/dashboard/faculty/reports' },
-  { id: 'assignments',label: 'Assignments (Moodle)', icon: BookOpen, badge: null, active: false, path: '/dashboard/faculty/my-classes' },
-  { id: 'attendance', label: 'Attendance (Vidya)',   icon: CheckCircle,badge: null, active: false, path: '/faculty/attendance' },
+  { id: 'assignments',label: 'Assignments (Moodle)', icon: BookOpen, badge: null, active: false, path: null, external: 'http://lms.kiet.edu/moodle/' },
+  { id: 'attendance', label: 'Attendance (Vidya)',   icon: CheckCircle,badge: null, active: false, path: null, external: 'https://kiet.cybervidya.net' },
 ]
 
 const mockClasses = [
@@ -120,7 +120,7 @@ export default function MyClassesPage() {
               PK
             </div>
             <div className="overflow-hidden">
-              <p className="font-semibold text-sm text-navy truncate">Prof. Priya Kapoor</p>
+              <p className="font-semibold text-sm text-navy truncate">Prof. Pushpendra Kumar</p>
               <p className="text-xs text-gray-500 truncate">CSE Department · 4 Subjects</p>
             </div>
           </div>
@@ -131,7 +131,9 @@ export default function MyClassesPage() {
             <button
               key={link.id}
               onClick={() => {
-                if (link.path) {
+                if (link.external) {
+                  window.open(link.external, '_blank')
+                } else if (link.path) {
                   router.push(link.path)
                 } else {
                   if (typeof setActiveNav === 'function') setActiveNav(link.id)
@@ -294,16 +296,10 @@ export default function MyClassesPage() {
                       <td className="px-6 py-4 text-right">
                         <div className="flex items-center justify-end gap-3">
                           <button
-                            onClick={() => router.push('/dashboard/faculty/analytics')}
+                            onClick={() => router.push(`/dashboard/faculty/analytics?subject=${c.id}`)}
                             className="text-xs font-bold text-teal-600 hover:text-teal-800 hover:underline flex items-center gap-1"
                           >
                             View Analytics <ExternalLink size={12} />
-                          </button>
-                          <button
-                            onClick={() => router.push('/dashboard/faculty/student/profile')}
-                            className="px-4 py-2 bg-white border border-gray-200 text-gray-700 font-bold text-xs rounded-xl hover:bg-gray-50 transition shadow-sm"
-                          >
-                            Open Roster
                           </button>
                         </div>
                       </td>
