@@ -5,15 +5,15 @@ import { useRouter } from 'next/navigation'
 import { Home, BookOpen, Bell, BarChart2, Users, CheckCircle, MessageCircle, FileText, Settings, LogOut, Search, ChevronDown, AlertTriangle, TrendingUp, Target, ExternalLink, MoreHorizontal, ChevronRight, User, Activity, Award, Grid, Zap, AlertCircle, Plug, Menu } from 'lucide-react'
 
 const navLinks = [
-  { id: 'dashboard',  label: 'Dashboard',        icon: Home,       badge: null,  active: true, path: '/dashboard/faculty' },
-  { id: 'analytics',  label: 'Subject Analytics',icon: Activity,   badge: null,  active: false, path: '/dashboard/faculty/analytics' },
-  { id: 'alerts',     label: 'Student Alerts',   icon: AlertCircle,badge: '2',   active: false, path: '/dashboard/faculty/alerts' },
-  { id: 'profiles',   label: 'Student Profiles', icon: Users,      badge: null,  active: false, path: '/dashboard/faculty/student/profile' },
-  { id: 'co-attain',  label: 'CO Attainment',    icon: Target,     badge: null,  active: false, path: '/dashboard/faculty/co-attainment' },
-  { id: 'parent-com', label: 'Parent Communication', icon: Bell,   badge: null,  active: false, path: '/dashboard/faculty/parent-communication' },
-  { id: 'parent-vis', label: 'Parent Visit Mode',icon: Users,      badge: null,  active: false, path: '/dashboard/faculty/parent-visit' },
-  { id: 'reports',    label: 'Reports',          icon: FileText,   badge: null,  active: false, path: '/dashboard/faculty/reports' },
-  { id: 'advisor',    label: 'AI Advisor',       icon: Search,     badge: null,  active: false, path: '/ai-advisor' },
+  { id: 'dashboard', label: 'Dashboard', icon: Home, badge: null, active: true, path: '/dashboard/faculty' },
+  { id: 'analytics', label: 'Subject Analytics', icon: Activity, badge: null, active: false, path: '/dashboard/faculty/analytics' },
+  { id: 'alerts', label: 'Student Alerts', icon: AlertCircle, badge: '2', active: false, path: '/dashboard/faculty/alerts' },
+  { id: 'profiles', label: 'Student Profiles', icon: Users, badge: null, active: false, path: '/dashboard/faculty/student/profile' },
+  { id: 'co-attain', label: 'CO Attainment', icon: Target, badge: null, active: false, path: '/dashboard/faculty/co-attainment' },
+  { id: 'parent-com', label: 'Parent Communication', icon: Bell, badge: null, active: false, path: '/dashboard/faculty/parent-communication' },
+  { id: 'parent-vis', label: 'Parent Visit Mode', icon: Users, badge: null, active: false, path: '/dashboard/faculty/parent-visit' },
+  { id: 'reports', label: 'Reports', icon: FileText, badge: null, active: false, path: '/dashboard/faculty/reports' },
+  { id: 'advisor', label: 'AI Advisor', icon: Search, badge: null, active: false, path: '/ai-advisor' },
 ]
 
 const statCards = [
@@ -212,9 +212,9 @@ export default function FacultyDashboard() {
                       <span className="text-xs font-bold text-gray-500">{sub.avg}% Avg</span>
                     </div>
                     <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
-                      <div 
-                        className={`h-1.5 rounded-full transition-all duration-1000 ${sub.avg > 70 ? 'bg-teal-500' : sub.avg > 60 ? 'bg-amber-500' : 'bg-red-500'}`} 
-                        style={{ width: `${sub.avg}%` }} 
+                      <div
+                        className={`h-1.5 rounded-full transition-all duration-1000 ${sub.avg > 70 ? 'bg-teal-500' : sub.avg > 60 ? 'bg-amber-500' : 'bg-red-500'}`}
+                        style={{ width: `${sub.avg}%` }}
                       />
                     </div>
                     <div className="flex justify-between mt-2">
@@ -231,51 +231,51 @@ export default function FacultyDashboard() {
             </div>
           </div>
 
-            {/* Moodle & Cyber Vidya Sync Section */}
-            <div className="mt-8 card animate-fade-in" style={{ animationDelay: '0.45s' }}>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="font-bold text-navy text-base">Moodle & Cyber Vidya Sync</h2>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-xs font-bold text-green-600 uppercase tracking-widest">Systems Live</span>
+          {/* Moodle & Cyber Vidya Sync Section */}
+          <div className="mt-8 card animate-fade-in" style={{ animationDelay: '0.45s' }}>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="font-bold text-navy text-base">Moodle & Cyber Vidya Sync</h2>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-xs font-bold text-green-600 uppercase tracking-widest">Systems Live</span>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Moodle Column */}
+              <div className="p-5 rounded-2xl bg-orange-50/50 border border-orange-100 flex gap-4">
+                <div className="w-12 h-12 bg-[#f98012] flex items-center justify-center rounded-xl text-white font-black text-xl flex-shrink-0 shadow-sm">M</div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-bold text-navy text-sm">Moodle LMS — Connected</h3>
+                    <span className="text-[9px] font-black bg-white px-1.5 py-0.5 rounded border border-orange-200 text-orange-600 uppercase">Syncing</span>
+                  </div>
+                  <ul className="space-y-1.5">
+                    <li className="text-xs text-gray-600 flex items-center gap-2"><CheckCircle size={12} className="text-orange-500" /> 11 assignments across 4 subjects</li>
+                    <li className="text-xs text-gray-600 flex items-center gap-2"><CheckCircle size={12} className="text-orange-500" /> 2 pending submissions flagged</li>
+                    <li className="text-xs text-gray-600 flex items-center gap-2"><CheckCircle size={12} className="text-orange-500" /> 3 new grades posted today</li>
+                  </ul>
+                  <button className="mt-4 text-[10px] font-black text-orange-600 uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">View All Assignments <ChevronRight size={12} /></button>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Moodle Column */}
-                <div className="p-5 rounded-2xl bg-orange-50/50 border border-orange-100 flex gap-4">
-                  <div className="w-12 h-12 bg-[#f98012] flex items-center justify-center rounded-xl text-white font-black text-xl flex-shrink-0 shadow-sm">M</div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                       <h3 className="font-bold text-navy text-sm">Moodle LMS — Connected</h3>
-                       <span className="text-[9px] font-black bg-white px-1.5 py-0.5 rounded border border-orange-200 text-orange-600 uppercase">Syncing</span>
-                    </div>
-                    <ul className="space-y-1.5">
-                      <li className="text-xs text-gray-600 flex items-center gap-2"><CheckCircle size={12} className="text-orange-500" /> 11 assignments across 4 subjects</li>
-                      <li className="text-xs text-gray-600 flex items-center gap-2"><CheckCircle size={12} className="text-orange-500" /> 2 pending submissions flagged</li>
-                      <li className="text-xs text-gray-600 flex items-center gap-2"><CheckCircle size={12} className="text-orange-500" /> 3 new grades posted today</li>
-                    </ul>
-                    <button className="mt-4 text-[10px] font-black text-orange-600 uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">View All Assignments <ChevronRight size={12} /></button>
-                  </div>
-                </div>
 
-                {/* Cyber Vidya Column */}
-                <div className="p-5 rounded-2xl bg-teal-50/50 border border-teal-100 flex gap-4">
-                  <div className="w-12 h-12 bg-teal-600 flex items-center justify-center rounded-xl text-white font-black text-xl flex-shrink-0 shadow-sm">CV</div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                       <h3 className="font-bold text-navy text-sm">Cyber Vidya — Connected</h3>
-                       <span className="text-[9px] font-black bg-white px-1.5 py-0.5 rounded border border-teal-200 text-teal-600 uppercase">Syncing</span>
-                    </div>
-                    <ul className="space-y-1.5">
-                      <li className="text-xs text-gray-600 flex items-center gap-2"><CheckCircle size={12} className="text-teal-500" /> 4 subjects tracked</li>
-                      <li className="text-xs text-gray-600 flex items-center gap-2"><CheckCircle size={12} className="text-teal-500" /> 1 student below 75% attendance</li>
-                      <li className="text-xs text-gray-600 flex items-center gap-2"><CheckCircle size={12} className="text-teal-500" /> Today's classes: 2 marked, 1 pending</li>
-                    </ul>
-                    <button className="mt-4 text-[10px] font-black text-teal-600 uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">View Attendance <ChevronRight size={12} /></button>
+              {/* Cyber Vidya Column */}
+              <div className="p-5 rounded-2xl bg-teal-50/50 border border-teal-100 flex gap-4">
+                <div className="w-12 h-12 bg-teal-600 flex items-center justify-center rounded-xl text-white font-black text-xl flex-shrink-0 shadow-sm">CV</div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-bold text-navy text-sm">Cyber Vidya — Connected</h3>
+                    <span className="text-[9px] font-black bg-white px-1.5 py-0.5 rounded border border-teal-200 text-teal-600 uppercase">Syncing</span>
                   </div>
+                  <ul className="space-y-1.5">
+                    <li className="text-xs text-gray-600 flex items-center gap-2"><CheckCircle size={12} className="text-teal-500" /> 4 subjects tracked</li>
+                    <li className="text-xs text-gray-600 flex items-center gap-2"><CheckCircle size={12} className="text-teal-500" /> 1 student below 75% attendance</li>
+                    <li className="text-xs text-gray-600 flex items-center gap-2"><CheckCircle size={12} className="text-teal-500" /> Today's classes: 2 marked, 1 pending</li>
+                  </ul>
+                  <button className="mt-4 text-[10px] font-black text-teal-600 uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">View Attendance <ChevronRight size={12} /></button>
                 </div>
               </div>
             </div>
+          </div>
         </main>
 
       </div>
