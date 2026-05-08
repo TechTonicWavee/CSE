@@ -3,21 +3,18 @@
 
 import { useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import {
-  Home, BookOpen, Bell, BarChart2, Users, Target,
-  MessageCircle, FileText, Settings, LogOut, Search, ChevronDown,
-  AlertTriangle, Calendar, Clock, ExternalLink
-} from 'lucide-react'
+import { Home, BookOpen, Bell, BarChart2, Users, Target, MessageCircle, FileText, Settings, LogOut, Search, ChevronDown, AlertTriangle, Calendar, Clock, ExternalLink, User, Activity, TrendingUp, Award, Grid, CheckCircle, Zap, AlertCircle, Plug } from 'lucide-react'
 
 const navLinks = [
-  { id: 'dashboard', label: 'Dashboard', icon: Home, badge: null, path: '/dashboard/faculty' },
-  { id: 'classes', label: 'My Classes', icon: BookOpen, badge: null, path: '/dashboard/faculty/my-classes' },
-  { id: 'alerts', label: 'Student Alerts', icon: Bell, badge: '5', path: '/dashboard/faculty/alerts' },
-  { id: 'analytics', label: 'Subject Analytics', icon: BarChart2, badge: null, path: '/dashboard/faculty/analytics' },
-  { id: 'profiles', label: 'Student Profiles', icon: Users, badge: null, path: '/dashboard/faculty/student/profile' },
-  { id: 'co', label: 'CO Attainment', icon: Target, badge: null, path: '/dashboard/faculty/co-attainment' },
-  { id: 'parent', label: 'Parent Communication', icon: MessageCircle, badge: null, path: '/dashboard/faculty/parent-communication' },
-  { id: 'reports', label: 'Reports', icon: FileText, badge: null, path: '/dashboard/faculty/reports' },
+  { id: 'dashboard',  label: 'Dashboard',        icon: Home,       badge: null,  active: true, path: '/dashboard/faculty' },
+  { id: 'analytics',  label: 'Subject Analytics',icon: Activity,   badge: null,  active: false, path: '/dashboard/faculty/analytics' },
+  { id: 'alerts',     label: 'Student Alerts',   icon: AlertCircle,badge: '2',   active: false, path: '/dashboard/faculty/alerts' },
+  { id: 'profiles',   label: 'Student Profiles', icon: Users,      badge: null,  active: false, path: '/dashboard/faculty/student/profile' },
+  { id: 'co-attain',  label: 'CO Attainment',    icon: Target,     badge: null,  active: false, path: '/dashboard/faculty/co-attainment' },
+  { id: 'parent-com', label: 'Parent Communication', icon: Bell,   badge: null,  active: false, path: '/dashboard/faculty/parent-communication' },
+  { id: 'parent-vis', label: 'Parent Visit Mode',icon: Users,      badge: null,  active: false, path: '/dashboard/faculty/parent-visit' },
+  { id: 'reports',    label: 'Reports',          icon: FileText,   badge: null,  active: false, path: '/dashboard/faculty/reports' },
+  { id: 'advisor',    label: 'AI Advisor',       icon: Search,     badge: null,  active: false, path: '/ai-advisor' },
 ]
 
 const mockClasses = [
@@ -132,8 +129,11 @@ export default function MyClassesPage() {
             <button
               key={link.id}
               onClick={() => {
-                setActiveNav(link.id)
-                if (link.path) router.push(link.path)
+                if (link.path) {
+                  router.push(link.path)
+                } else {
+                  if (typeof setActiveNav === 'function') setActiveNav(link.id)
+                }
               }}
               className={`nav-link w-full text-left mb-0.5 ${activeNav === link.id ? 'bg-teal-50 text-teal-700 font-semibold' : ''}`}
             >
