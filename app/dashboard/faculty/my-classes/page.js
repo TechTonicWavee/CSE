@@ -79,8 +79,9 @@ const mockClasses = [
 ]
 
 function attendanceBarClass(pct) {
-  if (pct >= 80) return 'bg-teal-500'
-  if (pct >= 72) return 'bg-amber-500'
+  if (pct >= 75) return 'bg-green-500'
+  if (pct >= 60) return 'bg-yellow-400'
+  if (pct >= 45) return 'bg-blue-500'
   return 'bg-red-500'
 }
 

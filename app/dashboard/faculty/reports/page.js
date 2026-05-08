@@ -76,7 +76,7 @@ export default function FacultyReportsPage() {
         </div>
         <nav className="flex-1 p-3 overflow-y-auto">
           {navLinks.map(link => (
-            <button key={link.id} onClick={() => router.push(link.path)}
+            <button key={link.id} onClick={() => { if (link.external) { window.open(link.external, '_blank'); return; } if (link.path) router.push(link.path); }}
               className={`nav-link w-full text-left mb-0.5 ${link.id === 'reports' ? 'bg-teal-50 text-teal-700 font-semibold' : ''}`}>
               <link.icon size={17} />
               <span className="flex-1">{link.label}</span>

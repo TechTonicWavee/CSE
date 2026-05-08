@@ -126,7 +126,8 @@ const navLinks = [
     icon: BookOpen,
     badge: null,
     active: false,
-    path: "/dashboard/faculty/my-classes",
+    path: null,
+    external: "http://lms.kiet.edu/moodle/",
   },
   {
     id: "attendance",
@@ -134,7 +135,8 @@ const navLinks = [
     icon: CheckCircle,
     badge: null,
     active: false,
-    path: "/faculty/attendance",
+    path: null,
+    external: "https://kiet.cybervidya.net",
   },
 ];
 
@@ -390,11 +392,10 @@ const studentTableData = [
 ];
 
 function getColorForScore(score) {
-  if (score >= 90) return "bg-green-700 text-white";
   if (score >= 75) return "bg-green-100 text-green-800";
-  if (score >= 60) return "bg-amber-100 text-amber-800";
-  if (score >= 45) return "bg-orange-100 text-orange-800";
-  return "bg-red-500 text-white";
+  if (score >= 60) return "bg-yellow-100 text-yellow-800";
+  if (score >= 45) return "bg-blue-100 text-blue-800";
+  return "bg-red-100 text-red-800";
 }
 
 const SUBJECTS = {
@@ -608,7 +609,7 @@ export default function SubjectAnalyticsPage() {
           {navLinks.map((link) => (
             <button
               key={link.id}
-              onClick={() => router.push(link.path)}
+              onClick={() => { if (link.external) { window.open(link.external, '_blank'); return; } if (link.path) router.push(link.path); }}
               className={`nav-link w-full text-left mb-0.5 ${activeNav === link.id ? "bg-teal-50 text-teal-700 font-semibold" : ""}`}
             >
               <link.icon size={17} />

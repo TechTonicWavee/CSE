@@ -17,8 +17,8 @@ const navLinks = [
   { id: 'parent',     label: 'Parent Communication', icon: MessageCircle, badge: null, active: false, path: '/dashboard/faculty/parent-communication' },
   { id: 'parent-vis', label: 'Parent Visit Mode',icon: Users,      badge: null,  active: true,  path: '/dashboard/faculty/parent-visit' },
   { id: 'reports',    label: 'Reports',          icon: FileText,   badge: null,  active: false, path: '/dashboard/faculty/reports' },
-  { id: 'assignments',label: 'Assignments (Moodle)', icon: BookOpen, badge: null, active: false, path: '/dashboard/faculty/my-classes' },
-  { id: 'attendance', label: 'Attendance (Vidya)',   icon: CheckCircle,badge: null, active: false, path: '/faculty/attendance' },
+  { id: 'assignments',label: 'Assignments (Moodle)', icon: BookOpen, badge: null, active: false, path: null, external: 'http://lms.kiet.edu/moodle/' },
+  { id: 'attendance', label: 'Attendance (Vidya)',   icon: CheckCircle,badge: null, active: false, path: null, external: 'https://kiet.cybervidya.net' },
 ]
 
 const statCards = [
@@ -109,7 +109,7 @@ export default function FacultyDashboard() {
             <button
               key={link.id}
               onClick={() => {
-                if (link.path) {
+                if (link.external) { window.open(link.external, '_blank'); return; }; if (link.path) {
                   router.push(link.path)
                 } else {
                   if (typeof setActiveNav === 'function') setActiveNav(link.id)

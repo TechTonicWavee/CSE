@@ -17,8 +17,8 @@ const navLinks = [
   { id: 'co',         label: 'CO Attainment',    icon: CheckCircle,badge: null,  active: true,  path: '/dashboard/faculty/co-attainment' },
   { id: 'parent',     label: 'Parent Communication', icon: MessageSquare, badge: null, active: false, path: '/dashboard/faculty/parent-communication' },
   { id: 'reports',    label: 'Reports',          icon: FileText,   badge: null,  active: false, path: '/dashboard/faculty/reports' },
-  { id: 'assignments',label: 'Assignments (Moodle)', icon: BookOpen, badge: null, active: false, path: '/dashboard/faculty/my-classes' },
-  { id: 'attendance', label: 'Attendance (Vidya)',   icon: CheckCircle,badge: null, active: false, path: '/faculty/attendance' },
+  { id: 'assignments',label: 'Assignments (Moodle)', icon: BookOpen, badge: null, active: false, path: null, external: 'http://lms.kiet.edu/moodle/' },
+  { id: 'attendance', label: 'Attendance (Vidya)',   icon: CheckCircle,badge: null, active: false, path: null, external: 'https://kiet.cybervidya.net' },
 ]
 
 const subjectData = {
@@ -141,7 +141,7 @@ export default function FacultyCOAttainment() {
             <button
               key={link.id}
               onClick={() => {
-                if (link.path) {
+                if (link.external) { window.open(link.external, '_blank'); return; }; if (link.path) {
                   router.push(link.path)
                 } else {
                   if (typeof setActiveNav === 'function') setActiveNav(link.id)
@@ -231,8 +231,9 @@ export default function FacultyCOAttainment() {
                       const isGood = overall >= 75
 
                       const barClass = (pct) => {
-                        if (pct >= 75) return 'bg-teal-500'
-                        if (pct >= 65) return 'bg-amber-500'
+                        if (pct >= 75) return 'bg-green-500'
+                        if (pct >= 60) return 'bg-yellow-400'
+                        if (pct >= 45) return 'bg-blue-500'
                         return 'bg-red-500'
                       }
 
@@ -410,10 +411,10 @@ export default function FacultyCOAttainment() {
                   <div className="w-full lg:w-1/3 border border-gray-200 rounded-xl p-5 flex flex-col justify-center">
                     <p className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Overall {activeTab} CO Attainment</p>
                     <div className="flex items-end gap-2 mb-4">
-                      <span className={`text-5xl font-black ${currentData.overall >= 75 ? 'text-green-500' : 'text-amber-500'}`}>{currentData.overall}%</span>
+                      <span className={`text-5xl font-black ${currentData.overall >= 75 ? 'text-green-500' : currentData.overall >= 60 ? 'text-yellow-500' : currentData.overall >= 45 ? 'text-blue-500' : 'text-red-500'}`}>{currentData.overall}%</span>
                     </div>
                     <div className="h-3 w-full bg-gray-100 rounded-full overflow-hidden mb-3">
-                      <div className={`h-full rounded-full ${currentData.overall >= 75 ? 'bg-green-500' : 'bg-amber-500'}`} style={{ width: `${currentData.overall}%` }}></div>
+                      <div className={`h-full rounded-full ${currentData.overall >= 75 ? 'bg-green-500' : currentData.overall >= 60 ? 'bg-yellow-400' : currentData.overall >= 45 ? 'bg-blue-500' : 'bg-red-500'}`} style={{ width: `${currentData.overall}%` }}></div>
                     </div>
                     {currentData.gap > 0 ? (
                       <p className="text-sm font-bold text-amber-700 bg-amber-50 p-2 rounded inline-block w-fit">

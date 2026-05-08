@@ -127,7 +127,8 @@ const navLinks = [
     icon: BookOpen,
     badge: null,
     active: false,
-    path: "/dashboard/faculty/my-classes",
+    path: null,
+    external: "http://lms.kiet.edu/moodle/",
   },
   {
     id: "attendance",
@@ -135,7 +136,8 @@ const navLinks = [
     icon: CheckCircle,
     badge: null,
     active: false,
-    path: "/faculty/attendance",
+    path: null,
+    external: "https://kiet.cybervidya.net",
   },
 ];
 
@@ -162,17 +164,31 @@ const radarData = [
 ];
 
 const STUDENT_LIST = [
-  { name: 'Siddharth Rao',  initials: 'SR', roll: '2CS38', section: 'B', spi: 94, att: 92, rank: 1,  subject: 'DBMS',  status: 'Strong',   statusColor: 'bg-green-100 text-green-700' },
-  { name: 'Ananya Verma',   initials: 'AV', roll: '2CS07', section: 'A', spi: 89, att: 88, rank: 2,  subject: 'DBMS',  status: 'Strong',   statusColor: 'bg-green-100 text-green-700' },
-  { name: 'Aryan Mehta',    initials: 'AM', roll: '2CS41', section: 'B', spi: 86, att: 90, rank: 3,  subject: 'DBMS',  status: 'Strong',   statusColor: 'bg-green-100 text-green-700' },
-  { name: 'Priya Sharma',   initials: 'PS', roll: '2CS18', section: 'A', spi: 83, att: 85, rank: 4,  subject: 'OS',    status: 'On Track', statusColor: 'bg-blue-100 text-blue-700'  },
-  { name: 'Priyanshu Raj',  initials: 'PR', roll: '2CS04', section: 'C', spi: 71, att: 86, rank: 5,  subject: 'TOC',   status: 'On Track', statusColor: 'bg-blue-100 text-blue-700'  },
-  { name: 'Mahesh Singh',   initials: 'MS', roll: '2CS22', section: 'B', spi: 72, att: 79, rank: 34, subject: 'DBMS',  status: 'On Track', statusColor: 'bg-blue-100 text-blue-700'  },
-  { name: 'Neha Joshi',     initials: 'NJ', roll: '2CS33', section: 'A', spi: 66, att: 80, rank: 7,  subject: 'OS',    status: 'Watch',    statusColor: 'bg-amber-100 text-amber-700'},
-  { name: 'Divya Patel',    initials: 'DP', roll: '2CS14', section: 'C', spi: 63, att: 78, rank: 8,  subject: 'DBMS',  status: 'Watch',    statusColor: 'bg-amber-100 text-amber-700'},
-  { name: 'Karan Joshi',    initials: 'KJ', roll: '2CS15', section: 'B', spi: 59, att: 74, rank: 9,  subject: 'TOC',   status: 'At Risk',  statusColor: 'bg-red-100 text-red-700'   },
-  { name: 'Rohit Sharma',   initials: 'RS', roll: '2CS47', section: 'A', spi: 54, att: 71, rank: 10, subject: 'DBMS',  status: 'At Risk',  statusColor: 'bg-red-100 text-red-700'   },
-  { name: 'Sneha Patel',    initials: 'SP', roll: '2CS23', section: 'C', spi: 47, att: 68, rank: 11, subject: 'OS',    status: 'Critical', statusColor: 'bg-red-500 text-white'     },
+  { name: 'Siddharth Rao',    initials: 'SR', roll: '2CS38', section: 'B', spi: 94, att: 92, rank: 1,  subject: 'DBMS',  status: 'Strong',   statusColor: 'bg-green-100 text-green-700' },
+  { name: 'Ananya Verma',     initials: 'AV', roll: '2CS07', section: 'A', spi: 91, att: 95, rank: 2,  subject: 'OS',    status: 'Strong',   statusColor: 'bg-green-100 text-green-700' },
+  { name: 'Aryan Mehta',      initials: 'AM', roll: '2CS41', section: 'B', spi: 88, att: 90, rank: 3,  subject: 'DBMS',  status: 'Strong',   statusColor: 'bg-green-100 text-green-700' },
+  { name: 'Priya Sharma',     initials: 'PS', roll: '2CS18', section: 'A', spi: 85, att: 88, rank: 4,  subject: 'TOC',   status: 'Strong',   statusColor: 'bg-green-100 text-green-700' },
+  { name: 'Ritika Gupta',     initials: 'RG', roll: '2CS29', section: 'C', spi: 82, att: 91, rank: 5,  subject: 'DSA',   status: 'Strong',   statusColor: 'bg-green-100 text-green-700' },
+  { name: 'Aditya Kumar',     initials: 'AK', roll: '2CS03', section: 'A', spi: 80, att: 86, rank: 6,  subject: 'DBMS',  status: 'Strong',   statusColor: 'bg-green-100 text-green-700' },
+  { name: 'Priyanshu Raj',    initials: 'PR', roll: '2CS04', section: 'C', spi: 78, att: 83, rank: 7,  subject: 'OS',    status: 'On Track', statusColor: 'bg-blue-100 text-blue-700'  },
+  { name: 'Mahesh Singh',     initials: 'MS', roll: '2CS22', section: 'B', spi: 76, att: 79, rank: 8,  subject: 'DBMS',  status: 'On Track', statusColor: 'bg-blue-100 text-blue-700'  },
+  { name: 'Tanvi Mishra',     initials: 'TM', roll: '2CS35', section: 'A', spi: 74, att: 84, rank: 9,  subject: 'TOC',   status: 'On Track', statusColor: 'bg-blue-100 text-blue-700'  },
+  { name: 'Harsh Vardhan',    initials: 'HV', roll: '2CS16', section: 'B', spi: 72, att: 80, rank: 10, subject: 'DSA',   status: 'On Track', statusColor: 'bg-blue-100 text-blue-700'  },
+  { name: 'Megha Tiwari',     initials: 'MT', roll: '2CS24', section: 'C', spi: 71, att: 77, rank: 11, subject: 'OS',    status: 'On Track', statusColor: 'bg-blue-100 text-blue-700'  },
+  { name: 'Vikas Yadav',      initials: 'VY', roll: '2CS44', section: 'A', spi: 69, att: 82, rank: 12, subject: 'DBMS',  status: 'Watch',    statusColor: 'bg-yellow-100 text-yellow-700' },
+  { name: 'Neha Joshi',       initials: 'NJ', roll: '2CS33', section: 'A', spi: 67, att: 80, rank: 13, subject: 'TOC',   status: 'Watch',    statusColor: 'bg-yellow-100 text-yellow-700' },
+  { name: 'Divya Patel',      initials: 'DP', roll: '2CS14', section: 'C', spi: 65, att: 78, rank: 14, subject: 'DSA',   status: 'Watch',    statusColor: 'bg-yellow-100 text-yellow-700' },
+  { name: 'Sumit Agarwal',    initials: 'SA', roll: '2CS31', section: 'B', spi: 63, att: 75, rank: 15, subject: 'OS',    status: 'Watch',    statusColor: 'bg-yellow-100 text-yellow-700' },
+  { name: 'Pooja Rawat',      initials: 'PO', roll: '2CS27', section: 'A', spi: 61, att: 73, rank: 16, subject: 'DBMS',  status: 'Watch',    statusColor: 'bg-yellow-100 text-yellow-700' },
+  { name: 'Nikhil Srivastava', initials: 'NS', roll: '2CS36', section: 'C', spi: 59, att: 70, rank: 17, subject: 'TOC',  status: 'At Risk',  statusColor: 'bg-red-100 text-red-700'    },
+  { name: 'Karan Joshi',      initials: 'KJ', roll: '2CS15', section: 'B', spi: 56, att: 74, rank: 18, subject: 'DSA',   status: 'At Risk',  statusColor: 'bg-red-100 text-red-700'    },
+  { name: 'Rohit Sharma',     initials: 'RS', roll: '2CS47', section: 'A', spi: 53, att: 71, rank: 19, subject: 'OS',    status: 'At Risk',  statusColor: 'bg-red-100 text-red-700'    },
+  { name: 'Ankita Singh',     initials: 'AS', roll: '2CS09', section: 'C', spi: 51, att: 66, rank: 20, subject: 'DBMS',  status: 'At Risk',  statusColor: 'bg-red-100 text-red-700'    },
+  { name: 'Deepak Verma',     initials: 'DV', roll: '2CS11', section: 'B', spi: 49, att: 65, rank: 21, subject: 'TOC',   status: 'At Risk',  statusColor: 'bg-red-100 text-red-700'    },
+  { name: 'Sneha Patel',      initials: 'SP', roll: '2CS23', section: 'C', spi: 47, att: 68, rank: 22, subject: 'DSA',   status: 'Critical', statusColor: 'bg-red-500 text-white'      },
+  { name: 'Ravi Shankar',     initials: 'RV', roll: '2CS43', section: 'A', spi: 43, att: 62, rank: 23, subject: 'OS',    status: 'Critical', statusColor: 'bg-red-500 text-white'      },
+  { name: 'Pallavi Yadav',    initials: 'PY', roll: '2CS26', section: 'B', spi: 39, att: 59, rank: 24, subject: 'DBMS',  status: 'Critical', statusColor: 'bg-red-500 text-white'      },
+  { name: 'Manish Gupta',     initials: 'MG', roll: '2CS21', section: 'C', spi: 35, att: 55, rank: 25, subject: 'TOC',   status: 'Critical', statusColor: 'bg-red-500 text-white'      },
 ];
 
 export default function FacultyStudentProfile() {
@@ -243,6 +259,7 @@ export default function FacultyStudentProfile() {
             <button
               key={link.id}
               onClick={() => {
+                if (link.external) { window.open(link.external, '_blank'); return; }
                 if (link.path) {
                   router.push(link.path);
                 } else {
@@ -345,43 +362,45 @@ export default function FacultyStudentProfile() {
                 <h1 className="text-2xl font-bold text-navy">Student Profiles</h1>
                 <p className="text-gray-500 text-sm mt-1">Select a student to view their detailed analytics and profile</p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="flex flex-col gap-2">
                 {STUDENT_LIST.map((st, idx) => (
                   <button key={idx} onClick={() => setSelectedStudent(st)}
-                    className="card text-left hover:border-teal-200 hover:shadow-md transition-all group animate-fade-in"
-                    style={{ animationDelay: `${idx * 0.04}s` }}>
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-                        style={{ background: 'linear-gradient(135deg, #0F766E, #047857)' }}>
-                        {st.initials}
-                      </div>
-                      <div className="flex-1">
-                        <p className="font-bold text-navy text-sm">{st.name}</p>
-                        <p className="text-xs text-gray-500">{st.roll} · Sec {st.section} · {st.subject}</p>
-                      </div>
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${st.statusColor}`}>{st.status}</span>
+                    className="bg-white border border-gray-100 rounded-xl px-5 py-3.5 text-left hover:border-teal-200 hover:shadow-sm transition-all group animate-fade-in flex items-center gap-4"
+                    style={{ animationDelay: `${idx * 0.02}s` }}>
+                    {/* Rank */}
+                    <span className="text-xs font-bold text-gray-400 w-6 text-center flex-shrink-0">#{st.rank}</span>
+                    {/* Avatar */}
+                    <div className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0"
+                      style={{ background: 'linear-gradient(135deg, #0F766E, #047857)' }}>
+                      {st.initials}
                     </div>
-                    <div className="grid grid-cols-3 gap-2 text-center">
-                      <div>
-                        <p className="text-xl font-black text-navy">{st.spi}</p>
-                        <p className="text-[10px] text-gray-500 uppercase font-semibold">SPI</p>
-                      </div>
-                      <div>
-                        <p className={`text-xl font-black ${st.att < 75 ? 'text-red-600' : 'text-navy'}`}>{st.att}%</p>
-                        <p className="text-[10px] text-gray-500 uppercase font-semibold">Attend</p>
-                      </div>
-                      <div>
-                        <p className="text-xl font-black text-navy">#{st.rank}</p>
-                        <p className="text-[10px] text-gray-500 uppercase font-semibold">Rank</p>
-                      </div>
+                    {/* Name + meta */}
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-navy text-sm truncate">{st.name}</p>
+                      <p className="text-xs text-gray-400">{st.roll} · Sec {st.section} · {st.subject}</p>
                     </div>
-                    <div className="mt-3 pt-3 border-t border-gray-50 flex items-center gap-3">
-                      <div className="flex-1 bg-gray-100 rounded-full h-1.5 overflow-hidden">
-                        <div className={`h-1.5 rounded-full transition-all duration-700 ${st.spi >= 75 ? 'bg-teal-500' : st.spi >= 60 ? 'bg-amber-500' : 'bg-red-500'}`}
+                    {/* SPI bar */}
+                    <div className="hidden sm:flex flex-col items-end w-32">
+                      <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
+                        <div className={`h-1.5 rounded-full ${st.spi >= 75 ? 'bg-green-500' : st.spi >= 60 ? 'bg-yellow-400' : st.spi >= 45 ? 'bg-blue-500' : 'bg-red-500'}`}
                           style={{ width: `${st.spi}%` }} />
                       </div>
-                      <span className="text-xs font-bold text-teal-600 group-hover:underline whitespace-nowrap">View →</span>
+                      <span className="text-[10px] text-gray-400 mt-0.5">SPI {st.spi}</span>
                     </div>
+                    {/* Stats */}
+                    <div className="flex items-center gap-5 flex-shrink-0">
+                      <div className="text-center hidden md:block">
+                        <p className="text-base font-black text-navy">{st.spi}</p>
+                        <p className="text-[10px] text-gray-400 uppercase">SPI</p>
+                      </div>
+                      <div className="text-center">
+                        <p className={`text-base font-black ${st.att < 75 ? 'text-red-600' : 'text-navy'}`}>{st.att}%</p>
+                        <p className="text-[10px] text-gray-400 uppercase">Attend</p>
+                      </div>
+                    </div>
+                    {/* Status badge */}
+                    <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full flex-shrink-0 ${st.statusColor}`}>{st.status}</span>
+                    <span className="text-xs font-bold text-teal-600 group-hover:underline whitespace-nowrap">View →</span>
                   </button>
                 ))}
               </div>

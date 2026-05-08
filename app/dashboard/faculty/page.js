@@ -441,7 +441,7 @@ export default function FacultyDashboard() {
                     </div>
                     <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
                       <div
-                        className={`h-1.5 rounded-full transition-all duration-1000 ${sub.avg > 70 ? "bg-teal-500" : sub.avg > 60 ? "bg-amber-500" : "bg-red-500"}`}
+                        className={`h-1.5 rounded-full transition-all duration-1000 ${sub.avg >= 75 ? "bg-green-500" : sub.avg >= 60 ? "bg-yellow-400" : sub.avg >= 45 ? "bg-blue-500" : "bg-red-500"}`}
                         style={{ width: `${sub.avg}%` }}
                       />
                     </div>
