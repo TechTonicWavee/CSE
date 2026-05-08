@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Home, BookOpen, Bell, BarChart2, Users, CheckCircle, MessageCircle, FileText, Settings, LogOut, Search, ChevronDown, TrendingUp, TrendingDown, MinusCircle, PieChart as PieIcon, Lightbulb, Users2, Building, AlertOctagon, Cpu, Download, ArrowUpRight, Zap, Target, User, Activity, Award, Grid, AlertCircle, Plug } from 'lucide-react'
+import { Brain, Home, BookOpen, Bell, BarChart2, Users, CheckCircle, MessageCircle, FileText, Settings, LogOut, Search, ChevronDown, TrendingUp, TrendingDown, MinusCircle, PieChart as PieIcon, Lightbulb, Users2, Building, AlertOctagon, Cpu, Download, ArrowUpRight, Zap, Target, User, Activity, Award, Grid, AlertCircle, Plug } from 'lucide-react'
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer, Cell,
   PieChart, Pie, Legend, CartesianGrid
@@ -15,9 +15,9 @@ const navLinks = [
   { id: 'forecast',   label: 'Cohort Forecasting',  icon: TrendingUp,badge: null,active: true,  path: '/dashboard/dean/forecasting' },
   { id: 'curriculum', label: 'Curriculum Analysis', icon: BookOpen,badge: null,  active: false, path: '/dashboard/dean/curriculum' },
   { id: 'policy',     label: 'Policy Simulation',   icon: Activity,badge: null,  active: false, path: '/dashboard/dean/policy-simulation' },
-  { id: 'accredit',   label: 'Accreditation Reports',icon: FileText,badge: null, active: false, path: '/dashboard/dean/accreditation' },
-  { id: 'cross',      label: 'Cross-Branch Insights', icon: Target, badge: null, active: false, path: '/dashboard/dean/cross-branch' },
-  { id: 'advisor',    label: 'AI Advisor',       icon: Search,     badge: null,  active: false, path: '/ai-advisor' },
+  { id: 'reports',    label: 'Reports',             icon: FileText,   badge: null, active: false, path: '/dashboard/dean/reports' },
+  { id: 'cross',      label: 'Year-wise Insights', icon: Target, badge: null, active: false, path: '/dashboard/dean/cross-branch' },
+  { id: 'intelligence', label: 'Student Intelligence', icon: Brain, badge: null, active: false, path: '/dashboard/dean/student-intelligence' },
 ]
 
 const pieData = [
@@ -37,16 +37,16 @@ const forecastChartData = [
 ]
 
 const allStudents = [
-  { id: 1, risk: 94, name: 'Sneha Patel', branch: 'CSE', year: '2nd', spi: 48, pred: 41, factor: 'Attendance + Score decline', faculty: 'Prof. Priya Kapoor', severity: 'CRITICAL' },
-  { id: 2, risk: 91, name: 'Mohammed Khan', branch: 'IT', year: '3rd', spi: 44, pred: 39, factor: '3 subjects below 50%', faculty: 'Prof. Meena Rao', severity: 'CRITICAL' },
-  { id: 3, risk: 87, name: 'Priti Desai', branch: 'ECE', year: '2nd', spi: 51, pred: 46, factor: 'Attendance critical — 2 subjects', faculty: 'Dr. Ramesh Pillai', severity: 'CRITICAL' },
-  { id: 4, risk: 83, name: 'Rohit Sharma', branch: 'CSE', year: '2nd', spi: 53, pred: 49, factor: 'Score declining 3 units', faculty: 'Prof. Priya Kapoor', severity: 'HIGH' },
-  { id: 5, risk: 79, name: 'Arjun Mehta', branch: 'CSE', year: '2nd', spi: 56, pred: 52, factor: 'Assignments not submitted', faculty: 'Dr. Suresh Iyer', severity: 'HIGH' },
-  { id: 6, risk: 74, name: 'Kavitha Reddy', branch: 'IT', year: '1st', spi: 49, pred: 46, factor: 'New student struggling to adapt', faculty: 'Prof. Dinesh Kumar', severity: 'HIGH' },
-  { id: 7, risk: 68, name: 'Ravi Teja', branch: 'ECE', year: '3rd', spi: 58, pred: 55, factor: 'Consistent below average', faculty: 'Dr. Ramesh Pillai', severity: 'MEDIUM' },
-  { id: 8, risk: 64, name: 'Lakshmi Priya', branch: 'CSE', year: '1st', spi: 55, pred: 53, factor: 'Attendance borderline', faculty: 'Prof. Kavya Nair', severity: 'MEDIUM' },
-  { id: 9, risk: 61, name: 'Deepak Nair', branch: 'IT', year: '4th', spi: 62, pred: 60, factor: 'Placement readiness low', faculty: 'Prof. Meena Rao', severity: 'MEDIUM' },
-  { id: 10, risk: 57, name: 'Suman Gupta', branch: 'CSE', year: '3rd', spi: 61, pred: 59, factor: 'Project submissions missing', faculty: 'Dr. Suresh Iyer', severity: 'MEDIUM' },
+  { id: 1, risk: 94, name: 'Sneha Patel',    branch: 'CSE', year: '2nd', spi: 48, pred: 41, factor: 'Attendance + Score decline',           faculty: 'Prof. Priya Kapoor', severity: 'CRITICAL' },
+  { id: 2, risk: 91, name: 'Vikas Joshi',    branch: 'CSE', year: '3rd', spi: 44, pred: 39, factor: '3 subjects below 50%',                  faculty: 'Dr. Suresh Iyer',    severity: 'CRITICAL' },
+  { id: 3, risk: 87, name: 'Priti Desai',    branch: 'CSE', year: '2nd', spi: 51, pred: 46, factor: 'Attendance critical — 2 subjects',       faculty: 'Prof. Priya Kapoor', severity: 'CRITICAL' },
+  { id: 4, risk: 83, name: 'Rohit Sharma',   branch: 'CSE', year: '2nd', spi: 53, pred: 49, factor: 'Score declining 3 units',                faculty: 'Prof. Priya Kapoor', severity: 'HIGH' },
+  { id: 5, risk: 79, name: 'Arjun Mehta',    branch: 'CSE', year: '2nd', spi: 56, pred: 52, factor: 'Assignments not submitted',              faculty: 'Dr. Suresh Iyer',    severity: 'HIGH' },
+  { id: 6, risk: 74, name: 'Kavitha Reddy',  branch: 'CSE', year: '1st', spi: 49, pred: 46, factor: 'New student struggling to adapt',        faculty: 'Prof. Kavya Nair',   severity: 'HIGH' },
+  { id: 7, risk: 68, name: 'Rahul Teja',     branch: 'CSE', year: '3rd', spi: 58, pred: 55, factor: 'Consistent below average',               faculty: 'Dr. Suresh Iyer',    severity: 'MEDIUM' },
+  { id: 8, risk: 64, name: 'Lakshmi Priya',  branch: 'CSE', year: '1st', spi: 55, pred: 53, factor: 'Attendance borderline',                  faculty: 'Prof. Kavya Nair',   severity: 'MEDIUM' },
+  { id: 9, risk: 61, name: 'Deepak Nair',    branch: 'CSE', year: '4th', spi: 62, pred: 60, factor: 'Placement readiness low',                faculty: 'Dr. Anita Sharma',   severity: 'MEDIUM' },
+  { id: 10, risk: 57, name: 'Suman Gupta',   branch: 'CSE', year: '3rd', spi: 61, pred: 59, factor: 'Project submissions missing',            faculty: 'Dr. Suresh Iyer',    severity: 'MEDIUM' },
 ]
 
 export default function DeanForecastingPage() {
@@ -54,7 +54,7 @@ export default function DeanForecastingPage() {
   const [activeNav] = useState('forecasting')
   const [sidebarOpen, setSidebarOpen] = useState(true)
 
-  const [filterBranch, setFilterBranch] = useState('All Branches')
+  const [filterBranch, setFilterBranch] = useState('CSE')
   const [filterYear, setFilterYear] = useState('All Years')
   const [filterRisk, setFilterRisk] = useState('All')
 
@@ -69,7 +69,7 @@ export default function DeanForecastingPage() {
   }
 
   const filteredStudents = allStudents.filter(s => {
-    if (filterBranch !== 'All Branches' && s.branch !== filterBranch) return false
+    if (s.branch !== 'CSE') return false
     if (filterYear !== 'All Years' && s.year !== filterYear) return false
     if (filterRisk !== 'All' && s.severity !== filterRisk.toUpperCase()) return false
     return true
@@ -101,9 +101,9 @@ export default function DeanForecastingPage() {
       <aside className={`${sidebarOpen ? 'w-64' : 'w-0 overflow-hidden'} flex-shrink-0 bg-white border-r border-gray-100 flex flex-col transition-all duration-300 shadow-sm z-20`}>
         <div className="p-5 border-b border-gray-50">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0" style={{ background: 'linear-gradient(135deg, #4F46E5, #3730A3)' }}>DR</div>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0" style={{ background: 'linear-gradient(135deg, #4F46E5, #3730A3)' }}>VS</div>
             <div className="overflow-hidden">
-              <p className="font-semibold text-sm text-navy truncate">Dr. Rajesh Verma</p>
+              <p className="font-semibold text-sm text-navy truncate">Dr. Vineet Sharma</p>
               <p className="text-xs text-gray-500 truncate">Dean of Academics</p>
             </div>
           </div>
@@ -149,7 +149,7 @@ export default function DeanForecastingPage() {
             <Bell size={19} />
           </button>
           <div className="flex items-center gap-2 cursor-pointer group">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs" style={{ background: 'linear-gradient(135deg, #4F46E5, #3730A3)' }}>DR</div>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs" style={{ background: 'linear-gradient(135deg, #4F46E5, #3730A3)' }}>VS</div>
             <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
           </div>
         </header>
@@ -299,10 +299,7 @@ export default function DeanForecastingPage() {
               <div className="p-4 border-b border-gray-100 bg-gray-50 flex flex-col sm:flex-row gap-3">
                 <select className="appearance-none bg-white border border-gray-200 text-gray-700 text-sm rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium"
                         value={filterBranch} onChange={(e) => setFilterBranch(e.target.value)}>
-                  <option>All Branches</option>
                   <option>CSE</option>
-                  <option>IT</option>
-                  <option>ECE</option>
                 </select>
                 <select className="appearance-none bg-white border border-gray-200 text-gray-700 text-sm rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium"
                         value={filterYear} onChange={(e) => setFilterYear(e.target.value)}>

@@ -24,7 +24,7 @@ import {
 const navLinks = [
   { id: 'department',          label: 'Department Overview',       icon: LayoutDashboard, path: '/dashboard/dean/department' },
   { id: 'forecasting',         label: 'Cohort Forecasting',        icon: LineIcon,        path: '/dashboard/dean/forecasting' },
-  { id: 'cross-branch',        label: 'Cross-Branch Insights',     icon: BarChart2,       path: '/dashboard/dean/cross-branch' },
+  { id: 'cross-branch',        label: 'Year-wise Insights',     icon: BarChart2,       path: '/dashboard/dean/cross-branch' },
   { id: 'faculty',             label: 'Faculty Analytics',         icon: Users,           path: '/dashboard/dean/faculty-performance' },
   { id: 'curriculum',          label: 'Curriculum Gaps',           icon: BookOpen,        path: '/dashboard/dean/curriculum' },
   { id: 'student-intelligence',label: 'Student Intelligence',      icon: Brain,           path: '/dashboard/dean/student-intelligence' },
@@ -172,9 +172,9 @@ export default function StudentIntelligence() {
         <div className="p-5 border-b border-gray-50">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-              style={{ background: '#4338CA' }}>DR</div>
+              style={{ background: '#4338CA' }}>VS</div>
             <div>
-              <p className="font-semibold text-sm text-[#0D1B2A] truncate">Dr. Rajesh Verma</p>
+              <p className="font-semibold text-sm text-[#0D1B2A] truncate">Dr. Vineet Sharma</p>
               <p className="text-xs text-gray-500 truncate">Head of Department · CSE</p>
             </div>
           </div>
@@ -221,7 +221,7 @@ export default function StudentIntelligence() {
             <span className="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">3</span>
           </button>
           <div className="flex items-center gap-2 cursor-pointer">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs" style={{ background: '#4338CA' }}>DR</div>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs" style={{ background: '#4338CA' }}>VS</div>
             <ChevronDown size={14} className="text-gray-400" />
           </div>
         </header>
@@ -262,7 +262,7 @@ export default function StudentIntelligence() {
               <div>
                 <p className="text-[10px] font-bold text-gray-400 uppercase mb-1.5">Branch</p>
                 <div className="flex gap-1.5">
-                  {['ALL', 'CSE', 'IT', 'ECE'].map(b => (
+                  {['ALL', 'CSE'].map(b => (
                     <button key={b} onClick={() => setFilterBranch(b)}
                       style={filterBranch === b ? { background: '#4338CA', color: '#fff', borderColor: '#4338CA' } : {}}
                       className="px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-semibold text-gray-600 hover:border-indigo-300 transition">
@@ -418,7 +418,7 @@ export default function StudentIntelligence() {
                     style={{ borderColor: isSelected ? cat.color : '#E5E7EB', outline: isSelected ? `2px solid ${cat.color}` : 'none' }}>
                     <div className="absolute top-0 right-0 w-20 h-20 rounded-full -translate-y-6 translate-x-6 opacity-[0.06]" style={{ background: cat.color }} />
                     <div className="flex items-start justify-between mb-3">
-                      <div className="text-xl">{meta.icon || '📊'}</div>
+                      <div className="text-xl"><BarChart2 size={18} style={{ color: cat.color }} /></div>
                       <SeverityBadge severity={cat.severity} label={cat.severity === 'critical' ? 'CRITICAL' : cat.severity === 'warn' ? 'WATCH' : cat.severity === 'good' ? 'STRONG' : 'INFO'} />
                     </div>
                     <p className="font-bold text-sm text-[#0D1B2A] mb-0.5">{cat.label}</p>
@@ -454,7 +454,7 @@ export default function StudentIntelligence() {
                   <>
                     <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between" style={{ background: cat?.bg || '#F9FAFB' }}>
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl flex items-center justify-center text-xl">{meta.icon || '📊'}</div>
+                        <div className="w-9 h-9 rounded-xl flex items-center justify-center text-xl"><BarChart2 size={18} style={{ color: cat.color }} /></div>
                         <div>
                           <h3 className="font-bold text-[#0D1B2A]">{cat?.label} — Top Performers</h3>
                           <p className="text-xs text-gray-500">Ranked by composite score · Click row to dismiss</p>

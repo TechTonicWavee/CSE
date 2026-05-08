@@ -2,10 +2,11 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Home, BookOpen, Bell, BarChart2, Users, CheckCircle, MessageCircle, FileText, Settings, LogOut, Search, ChevronDown, AlertTriangle, TrendingUp, Target, ExternalLink, MoreHorizontal, ChevronRight, User, Activity, Award, Grid, Zap, AlertCircle, Plug, Menu } from 'lucide-react'
+import { Home, BookOpen, Bell, BarChart2, Users, CheckCircle, MessageCircle, FileText, Settings, LogOut, Search, ChevronDown, AlertTriangle, TrendingUp, Target, ExternalLink, MoreHorizontal, ChevronRight, User, Activity, Award, Grid, Zap, AlertCircle, Plug, Menu, Brain } from 'lucide-react'
 
 const navLinks = [
   { id: 'dashboard', label: 'Dashboard', icon: Home, badge: null, active: true, path: '/dashboard/faculty' },
+  { id: 'intelligence', label: 'Student Intelligence', icon: Brain, badge: null, active: false, path: '/dashboard/faculty/student-intelligence' },
   { id: 'analytics', label: 'Subject Analytics', icon: Activity, badge: null, active: false, path: '/dashboard/faculty/analytics' },
   { id: 'alerts', label: 'Student Alerts', icon: AlertCircle, badge: '2', active: false, path: '/dashboard/faculty/alerts' },
   { id: 'profiles', label: 'Student Profiles', icon: Users, badge: null, active: false, path: '/dashboard/faculty/student/profile' },
@@ -13,7 +14,6 @@ const navLinks = [
   { id: 'parent-com', label: 'Parent Communication', icon: Bell, badge: null, active: false, path: '/dashboard/faculty/parent-communication' },
   { id: 'parent-vis', label: 'Parent Visit Mode', icon: Users, badge: null, active: false, path: '/dashboard/faculty/parent-visit' },
   { id: 'reports', label: 'Reports', icon: FileText, badge: null, active: false, path: '/dashboard/faculty/reports' },
-  { id: 'advisor', label: 'AI Advisor', icon: Search, badge: null, active: false, path: '/ai-advisor' },
 ]
 
 const statCards = [
@@ -156,7 +156,7 @@ export default function FacultyDashboard() {
 
         <main className="flex-1 overflow-y-auto p-6">
           <div className="mb-6 animate-fade-in">
-            <h1 className="text-2xl font-bold text-navy">Good morning, Prof. Kapoor 👋</h1>
+            <h1 className="text-2xl font-bold text-navy">Good morning, Prof. Kapoor</h1>
             <p className="text-gray-500 text-sm mt-1">Tuesday, 15 April 2026 — You have 2 classes today</p>
           </div>
 

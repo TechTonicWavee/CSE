@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { LayoutDashboard, LineChart, BarChart2, Users, BookOpen, Settings, Bell, Search, ChevronDown, Download, CheckCircle2, AlertTriangle, ArrowRight, XCircle, FileText, Cpu, Home, User, Activity, TrendingUp, Award, Grid, LogOut, Target, CheckCircle, Zap, AlertCircle, Plug } from 'lucide-react'
+import { Brain, LayoutDashboard, LineChart, BarChart2, Users, BookOpen, Settings, Bell, Search, ChevronDown, Download, CheckCircle2, AlertTriangle, ArrowRight, XCircle, FileText, Cpu, Home, User, Activity, TrendingUp, Award, Grid, LogOut, Target, CheckCircle, Zap, AlertCircle, Plug } from 'lucide-react'
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell
 } from 'recharts'
@@ -14,9 +14,9 @@ const navLinks = [
   { id: 'forecast',   label: 'Cohort Forecasting',  icon: TrendingUp,badge: null,active: false, path: '/dashboard/dean/forecasting' },
   { id: 'curriculum', label: 'Curriculum Analysis', icon: BookOpen,badge: null,  active: false, path: '/dashboard/dean/curriculum' },
   { id: 'policy',     label: 'Policy Simulation',   icon: Activity,badge: null,  active: false, path: '/dashboard/dean/policy-simulation' },
-  { id: 'accredit',   label: 'Accreditation Reports',icon: FileText,badge: null, active: false, path: '/dashboard/dean/accreditation' },
-  { id: 'cross',      label: 'Cross-Branch Insights', icon: Target, badge: null, active: false, path: '/dashboard/dean/cross-branch' },
-  { id: 'advisor',    label: 'AI Advisor',       icon: Search,     badge: null,  active: false, path: '/ai-advisor' },
+  { id: 'reports',    label: 'Reports',             icon: FileText,   badge: null, active: false, path: '/dashboard/dean/reports' },
+  { id: 'cross',      label: 'Year-wise Insights', icon: Target, badge: null, active: false, path: '/dashboard/dean/cross-branch' },
+  { id: 'intelligence', label: 'Student Intelligence', icon: Brain, badge: null, active: false, path: '/dashboard/dean/student-intelligence' },
 ]
 
 const heatmapData = [
@@ -135,9 +135,9 @@ const gap2Data = [
 
 const initialPlan = [
   { id: 1, priority: 'P1', change: 'Introduce real-world examples before Normalization theory', subject: 'DBMS', branches: 'All', effort: 'Low', impact: '-15%', status: 'Pending Approval', statusColor: 'bg-amber-100 text-amber-800 border-amber-200' },
-  { id: 2, priority: 'P2', change: 'Add regex visualizer tools to TOC curriculum', subject: 'TOC', branches: 'CSE, IT', effort: 'Low', impact: '-18%', status: 'In Review', statusColor: 'bg-blue-100 text-blue-800 border-blue-200' },
+  { id: 2, priority: 'P2', change: 'Add regex visualizer tools to TOC curriculum', subject: 'TOC', branches: 'CSE', effort: 'Low', impact: '-18%', status: 'In Review', statusColor: 'bg-blue-100 text-blue-800 border-blue-200' },
   { id: 3, priority: 'P3', change: 'Scheduling algorithm simulator in OS lab', subject: 'OS', branches: 'All', effort: 'Medium', impact: '-17%', status: 'Pending Approval', statusColor: 'bg-amber-100 text-amber-800 border-amber-200' },
-  { id: 4, priority: 'P4', change: 'DP problem sets with step-by-step worked examples', subject: 'DSA', branches: 'CSE, IT', effort: 'Low', impact: '-12%', status: 'Not Started', statusColor: 'bg-gray-100 text-gray-800 border-gray-200' },
+  { id: 4, priority: 'P4', change: 'DP problem sets with step-by-step worked examples', subject: 'DSA', branches: 'CSE', effort: 'Low', impact: '-12%', status: 'Not Started', statusColor: 'bg-gray-100 text-gray-800 border-gray-200' },
   { id: 5, priority: 'P5', change: 'Discrete math prerequisite check before TOC', subject: 'TOC', branches: 'All', effort: 'High', impact: '-11%', status: 'Under Discussion', statusColor: 'bg-purple-100 text-purple-800 border-purple-200' },
   { id: 6, priority: 'P6', change: 'Real-world pipelining demos using CPU-Z tool', subject: 'Computer Architecture', branches: 'All', effort: 'Medium', impact: '-9%', status: 'Not Started', statusColor: 'bg-gray-100 text-gray-800 border-gray-200' },
   { id: 7, priority: 'P7', change: 'Statistics module refresher before ML courses', subject: 'Mathematics', branches: 'All', effort: 'Medium', impact: '-14%', status: 'Not Started', statusColor: 'bg-gray-100 text-gray-800 border-gray-200' },
@@ -170,20 +170,20 @@ export default function CurriculumGapAnalysis() {
       {/* ══════════════════════════════════
           SIDEBAR
       ══════════════════════════════════ */}
-      <aside className={`${sidebarOpen ? 'w-64' : 'w-0 overflow-hidden'} flex-shrink-0 bg-navy flex flex-col transition-all duration-300 shadow-xl z-20`}>
+      <aside className={`${sidebarOpen ? 'w-64' : 'w-0 overflow-hidden'} flex-shrink-0 bg-white border-r border-gray-100 flex flex-col transition-all duration-300 shadow-xl z-20`}>
         <div className="p-5 border-b border-white/10">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-navy font-bold text-sm flex-shrink-0 bg-white">DR</div>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-navy font-bold text-sm flex-shrink-0 bg-white">VS</div>
             <div className="overflow-hidden">
-              <p className="font-semibold text-sm text-white truncate">Dr. Rajesh Verma</p>
-              <p className="text-xs text-blue-200 truncate">Dean of Academics</p>
+              <p className="font-semibold text-sm text-navy truncate">Dr. Vineet Sharma</p>
+              <p className="text-xs text-gray-500 truncate">Dean of Academics</p>
             </div>
           </div>
         </div>
 
         <nav className="flex-1 p-3 overflow-y-auto">
           {navLinks.map(link => (
-            <button key={link.id} onClick={() => router.push(link.path)} className={`nav-link w-full text-left mb-0.5 ${activeNav === link.id ? 'bg-white/10 text-white font-semibold' : 'text-gray-300 hover:bg-white/5 hover:text-white'}`}>
+            <button key={link.id} onClick={() => router.push(link.path)} className={`nav-link w-full text-left mb-0.5 ${activeNav === link.id ? 'bg-purple-50 text-purple-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-navy'}`}>
               <link.icon size={17} />
               <span className="flex-1">{link.label}</span>
             </button>
@@ -213,7 +213,7 @@ export default function CurriculumGapAnalysis() {
             <Bell size={19} />
           </button>
           <div className="flex items-center gap-2 cursor-pointer group">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-navy font-bold text-xs bg-gray-200">DR</div>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-navy font-bold text-xs bg-gray-200">VS</div>
             <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
           </div>
         </header>
@@ -348,7 +348,7 @@ export default function CurriculumGapAnalysis() {
                   <div className="lg:col-span-8">
                     <div className="flex items-center gap-4 mb-6">
                       <span className="px-3 py-1 bg-gray-100 text-gray-700 font-bold text-xs rounded-md">Subject: DBMS</span>
-                      <span className="text-sm font-bold text-red-600 bg-red-50 px-3 py-1 rounded-md">58% average fail rate across 3 years and 3 branches</span>
+                      <span className="text-sm font-bold text-red-600 bg-red-50 px-3 py-1 rounded-md">58% average fail rate across 3 years</span>
                     </div>
 
                     <h4 className="font-bold text-navy text-sm mb-3">Why it's failing:</h4>
@@ -508,7 +508,7 @@ export default function CurriculumGapAnalysis() {
                 <div className="p-5">
                   <div className="flex items-center gap-4 mb-4">
                     <span className="px-2.5 py-1 bg-gray-100 text-gray-700 font-bold text-[10px] rounded uppercase">Subject: OS</span>
-                    <span className="text-xs font-bold text-red-600">55% average across branches</span>
+                    <span className="text-xs font-bold text-red-600">55% average across CSE years</span>
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

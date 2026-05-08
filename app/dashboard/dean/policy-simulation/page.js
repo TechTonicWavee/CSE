@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
-import { LayoutDashboard, LineChart as LineIcon, BarChart2, Users, BookOpen, FileText, Settings, Bell, Search, ChevronDown, LogOut, Cpu, Play, RotateCcw, TrendingUp, TrendingDown, Zap, AlertTriangle, CheckCircle2, Save, Trash2, ChevronRight, Info, Sparkles, GraduationCap, Target, Users2, BookMarked, PlusCircle, Minus, Home, User, Activity, Award, Grid, CheckCircle, AlertCircle, Plug } from 'lucide-react'
+import { Brain, LayoutDashboard, LineChart as LineIcon, BarChart2, Users, BookOpen, FileText, Settings, Bell, Search, ChevronDown, LogOut, Cpu, Play, RotateCcw, TrendingUp, TrendingDown, Zap, AlertTriangle, CheckCircle2, Save, Trash2, ChevronRight, Info, Sparkles, GraduationCap, Target, Users2, BookMarked, PlusCircle, Minus, Home, User, Activity, Award, Grid, CheckCircle, AlertCircle, Plug } from 'lucide-react'
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend,
   RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
@@ -17,9 +17,9 @@ const navLinks = [
   { id: 'forecast',   label: 'Cohort Forecasting',  icon: TrendingUp,badge: null,active: false, path: '/dashboard/dean/forecasting' },
   { id: 'curriculum', label: 'Curriculum Analysis', icon: BookOpen,badge: null,  active: false, path: '/dashboard/dean/curriculum' },
   { id: 'policy',     label: 'Policy Simulation',   icon: Activity,badge: null,  active: true,  path: '/dashboard/dean/policy-simulation' },
-  { id: 'accredit',   label: 'Accreditation Reports',icon: FileText,badge: null, active: false, path: '/dashboard/dean/accreditation' },
-  { id: 'cross',      label: 'Cross-Branch Insights', icon: Target, badge: null, active: false, path: '/dashboard/dean/cross-branch' },
-  { id: 'advisor',    label: 'AI Advisor',       icon: Search,     badge: null,  active: false, path: '/ai-advisor' },
+  { id: 'reports',    label: 'Reports',             icon: FileText,   badge: null, active: false, path: '/dashboard/dean/reports' },
+  { id: 'cross',      label: 'Year-wise Insights', icon: Target, badge: null, active: false, path: '/dashboard/dean/cross-branch' },
+  { id: 'intelligence', label: 'Student Intelligence', icon: Brain, badge: null, active: false, path: '/dashboard/dean/student-intelligence' },
 ]
 
 // ─── SIMULATION ENGINE ────────────────────────────────────────────────────────
@@ -35,7 +35,7 @@ const BASE = {
   industryReadiness: 54,
 }
 
-const BRANCH_SENSITIVITY = { CSE: 1.1, IT: 1.0, ECE: 0.82, ALL: 1.0 }
+const BRANCH_SENSITIVITY = { CSE: 1.1, ALL: 1.0 }
 
 const IMPACT_MULTIPLIER = { Low: 0.5, Medium: 1.0, High: 1.6 }
 
@@ -146,7 +146,7 @@ function runSimulation(config) {
   }))
 
   // branch impact
-  const branchImpact = ['CSE', 'IT', 'ECE'].map(b => ({
+  const branchImpact = ['CSE'].map(b => ({
     branch: b,
     before: b === 'CSE' ? 64 : b === 'IT' ? 59 : 57,
     after: +(( b === 'CSE' ? 64 : b === 'IT' ? 59 : 57 ) + delta.placementDelta * BRANCH_SENSITIVITY[b]).toFixed(1),
@@ -199,7 +199,7 @@ function AnimatedNumber({ value, decimals = 1, duration = 900 }) {
       if (progress < 1) requestAnimationFrame(step)
     }
     requestAnimationFrame(step)
-  }, [value])
+  }, [value, decimals, duration])
   return <>{display}</>
 }
 
@@ -314,9 +314,9 @@ export default function PolicySimulation() {
         <div className="p-5 border-b border-gray-50">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-              style={{ background: '#4338CA' }}>DR</div>
+              style={{ background: '#4338CA' }}>VS</div>
             <div>
-              <p className="font-semibold text-sm text-[#0D1B2A] truncate">Dr. Rajesh Verma</p>
+              <p className="font-semibold text-sm text-[#0D1B2A] truncate">Dr. Vineet Sharma</p>
               <p className="text-xs text-gray-500 truncate">Head of Department · CSE</p>
             </div>
           </div>
@@ -360,7 +360,7 @@ export default function PolicySimulation() {
           </button>
           <div className="flex items-center gap-2 cursor-pointer">
             <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs"
-              style={{ background: '#4338CA' }}>DR</div>
+              style={{ background: '#4338CA' }}>VS</div>
             <ChevronDown size={14} className="text-gray-400" />
           </div>
         </header>

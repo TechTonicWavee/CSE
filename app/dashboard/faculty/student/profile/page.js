@@ -19,9 +19,8 @@ const navLinks = [
   { id: 'co',         label: 'CO Attainment',    icon: CheckCircle,badge: null,  active: false, path: '/dashboard/faculty/co-attainment' },
   { id: 'parent',     label: 'Parent Communication', icon: MessageSquare, badge: null, active: false, path: '/dashboard/faculty/parent-communication' },
   { id: 'reports',    label: 'Reports',          icon: FileText,   badge: null,  active: false, path: '/dashboard/faculty/reports' },
-  { id: 'assignments',label: 'Assignments (Moodle)', icon: BookOpen, badge: null, active: false, path: '/faculty/assignments' },
+  { id: 'assignments',label: 'Assignments (Moodle)', icon: BookOpen, badge: null, active: false, path: '/dashboard/faculty/my-classes' },
   { id: 'attendance', label: 'Attendance (Vidya)',   icon: CheckCircle,badge: null, active: false, path: '/faculty/attendance' },
-  { id: 'advisor',    label: 'AI Advisor',       icon: Search,     badge: null,  active: false, path: '/ai-advisor' },
 ]
 
 const dbmsTrend = [
@@ -286,8 +285,8 @@ export default function FacultyStudentProfile() {
                             <div className="mt-1 px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold rounded uppercase tracking-wider inline-block">Slight decline</div>
                           </div>
                         </div>
-                        <div className="h-[100px] w-full mt-4 overflow-hidden">
-                          <ResponsiveContainer width="100%" height="100%">
+                        <div className="h-[100px] w-full mt-4">
+                          <ResponsiveContainer width="100%" height={100}>
                             <LineChart data={dbmsTrend} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
                               <XAxis dataKey="unit" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#9ca3af' }} />
@@ -317,8 +316,8 @@ export default function FacultyStudentProfile() {
                             <div className="mt-1 px-2 py-0.5 bg-red-100 text-red-700 text-[10px] font-bold rounded uppercase tracking-wider inline-block">Declining</div>
                           </div>
                         </div>
-                        <div className="h-[100px] w-full mt-4 overflow-hidden">
-                          <ResponsiveContainer width="100%" height="100%">
+                        <div className="h-[100px] w-full mt-4">
+                          <ResponsiveContainer width="100%" height={100}>
                             <LineChart data={osTrend} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
                               <XAxis dataKey="unit" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#9ca3af' }} />
@@ -405,7 +404,7 @@ export default function FacultyStudentProfile() {
                       </div>
                       <div className="p-5 flex flex-col items-center">
                         <div className="h-[200px] w-full max-w-[250px]">
-                          <ResponsiveContainer width="100%" height="100%">
+                          <ResponsiveContainer width="100%" height={200}>
                             <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
                               <PolarGrid stroke="#e5e7eb" />
                               <PolarAngleAxis dataKey="subject" tick={{ fill: '#6b7280', fontSize: 10 }} />
@@ -568,7 +567,7 @@ export default function FacultyStudentProfile() {
                       </div>
                       <div className="p-5 flex justify-center">
                         <div className="h-[350px] w-full max-w-[400px]">
-                          <ResponsiveContainer width="100%" height="100%">
+                          <ResponsiveContainer width="100%" height={350}>
                             <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
                               <PolarGrid stroke="#e5e7eb" />
                               <PolarAngleAxis dataKey="subject" tick={{ fill: '#4b5563', fontSize: 12, fontWeight: 'bold' }} />
@@ -806,7 +805,7 @@ export default function FacultyStudentProfile() {
 
                   {/* Resolved Alerts */}
                   <div className="pt-6 border-t border-gray-200">
-                    <h3 className="text-lg font-bold text-navy mb-4 flex items-center gap-2 text-gray-400">
+                    <h3 className="text-lg font-bold text-gray-400 mb-4 flex items-center gap-2">
                       <CheckCircle2 size={18} />
                       Resolved Alerts
                     </h3>
@@ -822,7 +821,7 @@ export default function FacultyStudentProfile() {
                             <span className="text-xs text-gray-500 font-bold">Generated: 1 Mar 2026</span>
                             <span className="text-xs font-bold text-green-600">Resolved: 5 Mar</span>
                           </div>
-                          <h4 className="font-bold text-navy text-sm mb-3 line-through text-gray-500">DBMS Assignment 2 Submitted Late</h4>
+                          <h4 className="font-bold text-gray-500 text-sm mb-3 line-through">DBMS Assignment 2 Submitted Late</h4>
                           
                           <div className="bg-gray-50 p-3 rounded-lg border border-gray-100 mb-2">
                             <p className="text-xs font-bold text-gray-500 mb-1">Action taken:</p>
@@ -844,7 +843,7 @@ export default function FacultyStudentProfile() {
                             <span className="text-xs text-gray-500 font-bold">Generated: 15 Feb 2026</span>
                             <span className="text-xs font-bold text-green-600">Resolved: 28 Feb</span>
                           </div>
-                          <h4 className="font-bold text-navy text-sm mb-3 line-through text-gray-500">Attendance Warning — OS 73%</h4>
+                          <h4 className="font-bold text-gray-500 text-sm mb-3 line-through">Attendance Warning — OS 73%</h4>
                           
                           <div className="bg-gray-50 p-3 rounded-lg border border-gray-100 mb-2">
                             <p className="text-xs font-bold text-gray-500 mb-1">Action taken:</p>

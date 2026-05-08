@@ -22,7 +22,6 @@ const navLinks = [
   { id: 'integrations', label: 'Integrations',   icon: Plug,       badge: null,  active: false, path: '/integrations' },
   { id: 'assignments',  label: 'Assignments',    icon: BookOpen,   badge: null,  active: false, path: '/student/assignments' },
   { id: 'attendance',   label: 'Attendance',     icon: CheckCircle,badge: null,  active: false, path: '/student/attendance' },
-  { id: 'advisor',    label: 'AI Advisor',       icon: Search,     badge: null,  active: false, path: '/ai-advisor' },
 ]
 
 const statCards = [
@@ -316,7 +315,7 @@ export default function StudentDashboard() {
         <main className="flex-1 overflow-y-auto p-6">
           {/* Greeting */}
           <div className="mb-6 animate-fade-in">
-            <h1 className="text-2xl font-bold text-navy">Good morning, Priyanshu 👋</h1>
+            <h1 className="text-2xl font-bold text-navy">Good morning, Priyanshu</h1>
             <p className="text-gray-500 text-sm mt-1">
               Here is your overview for today — Tuesday, 15 April 2026
             </p>

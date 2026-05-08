@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { LayoutDashboard, LineChart, BarChart2, Users, BookOpen, FileText, Bell, Search, ChevronDown, Download, CheckCircle2, AlertTriangle, TrendingUp, TrendingDown, LogOut, Settings, Calendar, RefreshCw, Shield, Award, Zap, BarChart3, Users2, BookMarked, Cpu, Home, User, Activity, Grid, Target, CheckCircle, AlertCircle, Plug } from 'lucide-react'
+import { Brain, LayoutDashboard, LineChart, BarChart2, Users, BookOpen, FileText, Bell, Search, ChevronDown, Download, CheckCircle2, AlertTriangle, TrendingUp, TrendingDown, LogOut, Settings, Calendar, RefreshCw, Shield, Award, Zap, BarChart3, Users2, BookMarked, Cpu, Home, User, Activity, Grid, Target, CheckCircle, AlertCircle, Plug } from 'lucide-react'
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
   LineChart as RechartsLineChart, Line, Legend, PieChart, Pie, Cell
@@ -16,9 +16,9 @@ const navLinks = [
   { id: 'forecast',   label: 'Cohort Forecasting',  icon: TrendingUp,badge: null,active: false, path: '/dashboard/dean/forecasting' },
   { id: 'curriculum', label: 'Curriculum Analysis', icon: BookOpen,badge: null,  active: false, path: '/dashboard/dean/curriculum' },
   { id: 'policy',     label: 'Policy Simulation',   icon: Activity,badge: null,  active: false, path: '/dashboard/dean/policy-simulation' },
-  { id: 'accredit',   label: 'Accreditation Reports',icon: FileText,badge: null, active: true,  path: '/dashboard/dean/reports' },
-  { id: 'cross',      label: 'Cross-Branch Insights', icon: Target, badge: null, active: false, path: '/dashboard/dean/cross-branch' },
-  { id: 'advisor',    label: 'AI Advisor',       icon: Search,     badge: null,  active: false, path: '/ai-advisor' },
+  { id: 'reports',    label: 'Reports',             icon: FileText,   badge: null, active: false, path: '/dashboard/dean/reports' },
+  { id: 'cross',      label: 'Year-wise Insights', icon: Target, badge: null, active: false, path: '/dashboard/dean/cross-branch' },
+  { id: 'intelligence', label: 'Student Intelligence', icon: Brain, badge: null, active: false, path: '/dashboard/dean/student-intelligence' },
 ]
 
 // ─── MOCK DATA ─────────────────────────────────────────────────────────────────
@@ -32,17 +32,15 @@ const kpiData = [
 ]
 
 const branchSummary = [
-  { branch: 'CSE', students: 480, avgSpi: 68.4, passRate: '86%', placementReady: '64%', atRisk: 38, healthScore: 76, co: '71%', status: 'HEALTHY',   statusColor: 'bg-green-100 text-green-700 border border-green-200'  },
-  { branch: 'IT',  students: 420, avgSpi: 65.1, passRate: '82%', placementReady: '59%', atRisk: 51, healthScore: 71, co: '68%', status: 'AVERAGE',   statusColor: 'bg-amber-100 text-amber-700 border border-amber-200'  },
-  { branch: 'ECE', students: 340, avgSpi: 62.7, passRate: '79%', placementReady: '57%', atRisk: 38, healthScore: 69, co: '65%', status: 'AT RISK',   statusColor: 'bg-red-100 text-red-700 border border-red-200'        },
+  { branch: 'CSE', students: 480, avgSpi: 68.4, passRate: '86%', placementReady: '64%', atRisk: 38, healthScore: 76, co: '71%', status: 'HEALTHY', statusColor: 'bg-green-100 text-green-700 border border-green-200' },
 ]
 
 const semesterTrend = [
-  { sem: 'S1 2024', CSE: 71, IT: 66, ECE: 62 },
-  { sem: 'S2 2024', CSE: 73, IT: 68, ECE: 64 },
-  { sem: 'S1 2025', CSE: 74, IT: 69, ECE: 65 },
-  { sem: 'S2 2025', CSE: 75, IT: 70, ECE: 67 },
-  { sem: 'S1 2026', CSE: 76, IT: 71, ECE: 69 },
+  { sem: 'S1 2024', CSE: 71 },
+  { sem: 'S2 2024', CSE: 73 },
+  { sem: 'S1 2025', CSE: 74 },
+  { sem: 'S2 2025', CSE: 75 },
+  { sem: 'S1 2026', CSE: 76 },
 ]
 
 const passRateData = [
@@ -65,24 +63,24 @@ const facultySummary = [
   { name: 'Dr. Anita Sharma',  branch: 'CSE', score: 91, students: 120, co: '82%', category: 'Exceptional',   catColor: 'bg-green-100 text-green-800 border border-green-200' },
   { name: 'Prof. Priya Kapoor',branch: 'CSE', score: 87, students: 243, co: '74%', category: 'High Performer', catColor: 'bg-teal-100 text-teal-800 border border-teal-200'   },
   { name: 'Dr. Suresh Iyer',   branch: 'CSE', score: 84, students: 198, co: '79%', category: 'High Performer', catColor: 'bg-teal-100 text-teal-800 border border-teal-200'   },
-  { name: 'Prof. Meena Rao',   branch: 'IT',  score: 81, students: 210, co: '77%', category: 'High Performer', catColor: 'bg-teal-100 text-teal-800 border border-teal-200'   },
-  { name: 'Dr. Ramesh Pillai', branch: 'ECE', score: 76, students: 186, co: '71%', category: 'Good',           catColor: 'bg-blue-100 text-blue-800 border border-blue-200'   },
+
+
   { name: 'Prof. Kavya Nair',  branch: 'CSE', score: 73, students: 175, co: '69%', category: 'Average',        catColor: 'bg-amber-100 text-amber-800 border border-amber-200'},
   { name: 'Dr. Ravi Sharma',   branch: 'CSE', score: 51, students: 156, co: '57%', category: 'Critical',       catColor: 'bg-red-100 text-red-800 border border-red-200'      },
-  { name: 'Prof. Geeta Menon', branch: 'ECE', score: 43, students: 128, co: '52%', category: 'Critical',       catColor: 'bg-red-100 text-red-800 border border-red-200'      },
+
 ]
 
 const curriculumAlerts = [
-  { subject: 'Normalization (DBMS)',       failRate: '41%', branches: 'CSE, IT, ECE', severity: 'CRITICAL' },
-  { subject: 'Process Scheduling (OS)',    failRate: '43%', branches: 'All',          severity: 'CRITICAL' },
+  { subject: 'Normalization (DBMS)',       failRate: '41%', branches: 'CSE', severity: 'CRITICAL' },
+  { subject: 'Process Scheduling (OS)',    failRate: '43%', branches: 'CSE',          severity: 'CRITICAL' },
   { subject: 'Graph Algorithms (DSA)',     failRate: '34%', branches: 'CSE, IT',      severity: 'HIGH'     },
-  { subject: 'Analog Electronics',         failRate: '38%', branches: 'ECE',          severity: 'HIGH'     },
-  { subject: 'Software Design Patterns',   failRate: '28%', branches: 'IT',           severity: 'MEDIUM'   },
+  { subject: 'Analog Electronics',         failRate: '38%', branches: 'CSE',          severity: 'HIGH'     },
+  { subject: 'Software Design Patterns',   failRate: '28%', branches: 'CSE',           severity: 'MEDIUM'   },
 ]
 
 const insights = [
   { type: 'positive', text: 'CSE branch maintains highest health score (76/100) — 5 pts above department average.' },
-  { type: 'warning',  text: 'ECE department at-risk ratio is 11.2%, highest across all branches — intervention recommended.' },
+  { type: 'warning',  text: 'CSE at-risk ratio is 7.9% — intervention program has reduced it by 2.1% from last semester.' },
   { type: 'positive', text: 'Overall dept pass rate improved by 3.8% from S1 2024 to S1 2026.' },
   { type: 'warning',  text: '12 faculty members scoring below 60 — mentorship program advised.' },
   { type: 'positive', text: 'Placement readiness up 4% after industry connect workshop (Feb 2026).' },
@@ -96,9 +94,9 @@ function buildReportJSON(semester, branch) {
   return {
     generated_at: new Date().toISOString(),
     report_period: semester,
-    scope: branch === 'All' ? 'All Branches' : branch,
+    scope: branch === 'All' ? 'CSE' : branch,
     kpis: kpiData.map(k => ({ metric: k.label, value: k.value, change: k.delta })),
-    branch_summary: branchSummary.filter(b => branch === 'All' || b.branch === branch),
+    branch_summary: branchSummary.filter(b => b.branch === 'CSE'),
     curriculum_alerts: curriculumAlerts,
     faculty_summary: facultySummary,
     at_risk_distribution: riskDistribution,
@@ -120,11 +118,11 @@ export default function DeanReports() {
   const router       = useRouter()
   const [activeNav]  = useState('reports')
   const [sidebarOpen, setSidebarOpen] = useState(true)
-  const [branch,     setBranch]       = useState('All')
+  const [branch,     setBranch]       = useState('CSE')
   const [semester,   setSemester]     = useState('S1 2026')
 
-  const filteredBranch = branchSummary.filter(b => branch === 'All' || b.branch === branch)
-  const filteredFaculty = facultySummary.filter(f => branch === 'All' || f.branch === branch)
+  const filteredBranch = branchSummary.filter(b => b.branch === 'CSE')
+  const filteredFaculty = facultySummary.filter(f => f.branch === 'CSE')
 
   return (
     <div className="flex h-screen bg-[#F3F4F6] overflow-hidden font-sans">
@@ -136,7 +134,7 @@ export default function DeanReports() {
               DR
             </div>
             <div>
-              <p className="font-semibold text-sm text-[#0D1B2A] truncate">Dr. Rajesh Verma</p>
+              <p className="font-semibold text-sm text-[#0D1B2A] truncate">Dr. Vineet Sharma</p>
               <p className="text-xs text-gray-500 truncate">Head of Department · CSE</p>
             </div>
           </div>
@@ -184,7 +182,7 @@ export default function DeanReports() {
             <span className="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">2</span>
           </button>
           <div className="flex items-center gap-2 cursor-pointer group">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs" style={{ background: 'linear-gradient(135deg, #5B21B6, #4C1D95)' }}>DR</div>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs" style={{ background: 'linear-gradient(135deg, #5B21B6, #4C1D95)' }}>VS</div>
             <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
           </div>
         </header>
@@ -282,7 +280,7 @@ export default function DeanReports() {
                   <YAxis domain={[58, 82]} tick={{ fontSize: 11, fill: '#9CA3AF' }} />
                   <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
                   <Legend wrapperStyle={{ fontSize: 11 }} />
-                  {['CSE', 'IT', 'ECE'].map(b => (
+                  {['CSE'].map(b => (
                     <Line key={b} type="monotone" dataKey={b} stroke={COLORS_LINE[b]} strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} />
                   ))}
                 </RechartsLineChart>
@@ -446,7 +444,7 @@ export default function DeanReports() {
 
           {/* Footer */}
           <div className="text-center text-xs text-gray-400 py-2 animate-fade-in">
-            © 2026 Educator Analytics OS · Report generated for {semester} · {branch === 'All' ? 'All Branches' : branch} · Dean: Dr. Rajesh Verma
+            © 2026 Educator Analytics OS · Report generated for {semester} · {branch === 'All' ? 'CSE' : branch} · Dean: Dr. Vineet Sharma
           </div>
         </main>
       </div>

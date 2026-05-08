@@ -23,7 +23,6 @@ const navLinks = [
   { id: 'integrations', label: 'Integrations',   icon: Plug,       badge: null,  active: false, path: '/integrations' },
   { id: 'assignments',  label: 'Assignments',    icon: BookOpen,   badge: null,  active: false, path: '/student/assignments' },
   { id: 'attendance',   label: 'Attendance',     icon: CheckCircle,badge: null,  active: true, path: '/student/attendance' },
-  { id: 'advisor',    label: 'AI Advisor',       icon: Search,     badge: null,  active: false, path: '/ai-advisor' },
 ]
 
 function Plug({ size = 17 }) {
@@ -342,7 +341,7 @@ export default function AttendanceView() {
                   <div className="bg-white rounded-2xl border-l-4 border-l-red-500 border-y border-r border-red-100 p-6 shadow-md flex flex-col ring-2 ring-red-500/5">
                      <div className="flex justify-between items-start mb-6">
                         <h3 className="font-bold text-navy text-lg">Theory of Computation</h3>
-                        <span className="px-3 py-1 bg-red-600 text-white text-[10px] font-black uppercase rounded-full animate-pulse-subtle">WARNING ⚠️</span>
+                        <span className="px-3 py-1 bg-red-600 text-white text-[10px] font-black uppercase rounded-full animate-pulse-subtle">WARNING</span>
                      </div>
                      <div className="flex items-center gap-6 mb-6">
                         <div className="relative w-20 h-20">

@@ -23,7 +23,6 @@ const navLinks = [
   { id: 'integrations', label: 'Integrations',   icon: Plug,       badge: null,  active: false, path: '/integrations' },
   { id: 'assignments',  label: 'Assignments',    icon: BookOpen,   badge: null,  active: true, path: '/student/assignments' },
   { id: 'attendance',   label: 'Attendance',     icon: CheckCircle,badge: null,  active: false, path: '/student/attendance' },
-  { id: 'advisor',    label: 'AI Advisor',       icon: Search,     badge: null,  active: false, path: '/ai-advisor' },
 ]
 
 function Plug({ size = 17 }) {
@@ -97,7 +96,7 @@ export default function AssignmentDashboard() {
       remainingText: 'Tomorrow — 18 hours remaining',
       description: 'Write optimized SQL queries for 10 given scenarios. Create indexes and explain query execution plans using EXPLAIN ANALYZE.',
       marks: '25 marks',
-      reminder: '📱 Reminder sent to your WhatsApp 3 hours ago',
+      reminder: 'Reminder sent to your WhatsApp 3 hours ago',
       type: 'Pending'
     },
     {
@@ -112,15 +111,15 @@ export default function AssignmentDashboard() {
       description: 'Design DFAs for 5 given languages. Convert Regular Expressions to NFAs using Thompson\'s construction.',
       marks: '20 marks',
       reminders: [
-        '📱 April 19 — 3 days before reminder',
-        '📱 April 21 — 1 day before reminder',
-        '📱 April 22, 8 AM — morning of deadline'
+        'April 19 — 3 days before reminder',
+        'April 21 — 1 day before reminder',
+        'April 22, 8 AM — morning of deadline'
       ],
       type: 'Pending'
     },
     {
       id: 4,
-      status: 'Graded ✅',
+      status: 'Graded',
       subject: 'DBMS',
       subjectColor: 'blue',
       title: 'DBMS Assignment 3 — Normalization Practice',
@@ -133,7 +132,7 @@ export default function AssignmentDashboard() {
     },
     {
       id: 5,
-      status: 'Graded ✅',
+      status: 'Graded',
       subject: 'OS',
       subjectColor: 'teal',
       title: 'OS Assignment 3 — Memory Management',

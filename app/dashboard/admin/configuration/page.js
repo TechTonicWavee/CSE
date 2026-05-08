@@ -55,7 +55,7 @@ const systemLogs = [
   { time: '15 Apr 2026 10:34 AM', user: 'Prof. Priya Kapoor', type: 'Data Change', desc: 'Parent Visit QR generated for Priyanshu Raj — 30 min session', status: 'Success' },
   { time: '15 Apr 2026 10:15 AM', user: 'Prof. Meena Rao', type: 'Login', desc: 'Faculty login — IT Department', status: 'Success' },
   { time: '15 Apr 2026 9:52 AM', user: 'AI System', type: 'AI Agent', desc: 'SPI recalculation completed — CSE 2nd year — 180 students updated', status: 'Success' },
-  { time: '15 Apr 2026 9:31 AM', user: 'Dr. Rajesh Verma', type: 'Admin Action', desc: 'Accreditation report generated — NBA OBE Even Sem 2026', status: 'Success' },
+  { time: '15 Apr 2026 9:31 AM', user: 'Dr. Vineet Sharma', type: 'Admin Action', desc: 'Accreditation report generated — NBA OBE Even Sem 2026', status: 'Success' },
   { time: '15 Apr 2026 9:14 AM', user: 'System', type: 'Data Change', desc: 'Bulk marks upload — OS Unit 3 — 240 student records updated', status: 'Success' },
   { time: '14 Apr 2026 6:43 PM', user: 'AI System', type: 'AI Agent', desc: 'Career Advisor Agent ran for 480 CSE students — batch analysis', status: 'Success' },
   { time: '14 Apr 2026 4:22 PM', user: 'Admin', type: 'Admin Action', desc: 'SPI weight configuration updated — Project Quality weight changed from 15% to 20%', status: 'Success' },

@@ -4,8 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import {
   User, BookOpen, Building2, Heart, Settings,
-  Eye, EyeOff, ChevronRight, Zap, TrendingUp, Bell,
-  GraduationCap, BarChart3, Shield
+  Eye, EyeOff, ChevronRight,
 } from 'lucide-react'
 
 const roles = [
@@ -61,24 +60,6 @@ const roles = [
   },
 ]
 
-const features = [
-  {
-    icon: Zap,
-    title: 'AI-Powered Insights',
-    desc: 'Multi-agent AI that analyzes every student across 7 dimensions of intelligence',
-  },
-  {
-    icon: BarChart3,
-    title: 'Student Potential Index',
-    desc: 'One score that captures academic, project, skill and extracurricular performance',
-  },
-  {
-    icon: Bell,
-    title: 'Real-Time Alerts',
-    desc: 'Early warning system flags at-risk students weeks before exam failure',
-  },
-]
-
 export default function LoginPage() {
   const router = useRouter()
   const [showPass, setShowPass] = useState(false)
@@ -87,103 +68,14 @@ export default function LoginPage() {
   const [hoveredRole, setHoveredRole] = useState(null)
 
   return (
-    <div className="min-h-screen flex font-sans">
-      {/* ─── LEFT PANEL ─── */}
-      <div
-        className="hidden lg:flex flex-col justify-between w-[46%] min-h-screen p-10"
-        style={{ background: 'linear-gradient(160deg, #0D1B2A 0%, #0f2744 100%)' }}
-      >
+    <div className="min-h-screen flex items-center justify-center bg-[#F3F4F6] font-sans px-4 py-10">
+      {/* ─── CENTER PANEL ─── */}
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-card p-8 animate-fade-in">
         {/* Logo */}
-        <div>
-          <div className="flex items-center gap-3 mb-3">
-            <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-              style={{ background: '#1A56DB' }}
-            >
-              EA
-            </div>
-            <span className="text-white font-bold text-[22px] leading-tight">
-              Educator Analytics OS
-            </span>
-          </div>
-          <p className="text-gray-400 italic text-sm ml-1 mb-10">
-            "Every student is more than their marks."
-          </p>
-
-          {/* Feature Cards */}
-          <div className="flex flex-col gap-4">
-            {features.map((f, i) => (
-              <div
-                key={i}
-                className="rounded-xl p-4 flex gap-4 items-start animate-fade-in"
-                style={{
-                  background: 'rgba(255,255,255,0.04)',
-                  borderLeft: '3px solid #1A56DB',
-                  animationDelay: `${i * 0.1}s`,
-                }}
-              >
-                <div
-                  className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                  style={{ background: 'rgba(26,86,219,0.2)' }}
-                >
-                  <f.icon size={16} color="#60a5fa" />
-                </div>
-                <div>
-                  <p className="text-white font-semibold text-sm mb-0.5">{f.title}</p>
-                  <p className="text-gray-400 text-xs leading-relaxed">{f.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Stats row */}
-          <div className="grid grid-cols-3 gap-3 mt-8">
-            {[
-              { value: '12K+', label: 'Students' },
-              { value: '340+', label: 'Faculty' },
-              { value: '98%', label: 'Accuracy' },
-            ].map((s, i) => (
-              <div
-                key={i}
-                className="rounded-xl p-3 text-center"
-                style={{ background: 'rgba(255,255,255,0.05)' }}
-              >
-                <p className="text-white font-bold text-xl">{s.value}</p>
-                <p className="text-gray-500 text-xs mt-0.5">{s.label}</p>
-              </div>
-            ))}
-          </div>
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0" style={{ background: 'linear-gradient(135deg, #1A56DB, #1447C0)' }}>EA</div>
+          <span className="font-bold text-navy text-base">Educator Analytics OS</span>
         </div>
-
-        {/* Bottom tag */}
-        <p className="text-gray-600 text-xs mt-8">
-          Built for engineering colleges across India
-        </p>
-      </div>
-
-      {/* ─── RIGHT PANEL ─── */}
-      <div className="flex-1 flex flex-col justify-center px-8 sm:px-14 py-10 bg-white animate-fade-in">
-        {/* Badge */}
-        <div className="flex justify-end mb-8">
-          <span
-            className="text-xs font-semibold px-3 py-1.5 rounded-full"
-            style={{ background: '#EFF6FF', color: '#1A56DB' }}
-          >
-            2026–27 Academic Year
-          </span>
-        </div>
-
-        <div className="max-w-md w-full mx-auto">
-          {/* Mobile logo */}
-          <div className="flex items-center gap-2 mb-6 lg:hidden">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-xs"
-              style={{ background: '#1A56DB' }}
-            >
-              EA
-            </div>
-            <span className="font-bold text-navy text-lg">Educator Analytics OS</span>
-          </div>
 
           <h1 className="text-3xl font-bold text-navy mb-1">Welcome back</h1>
           <p className="text-gray-500 text-sm mb-8">Sign in to your dashboard</p>
@@ -276,9 +168,8 @@ export default function LoginPage() {
           </div>
 
           <p className="text-center text-xs text-gray-400 mt-8">
-            © 2026 Educator Analytics OS · Built for AICTE-affiliated colleges
+            © 2026 Educator Analytics OS · CSE Department
           </p>
-        </div>
       </div>
     </div>
   )

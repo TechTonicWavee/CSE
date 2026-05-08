@@ -262,7 +262,7 @@ export default function SPIConfigPanel() {
 
                   {!is100 && (
                     <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-xl text-sm font-bold text-red-700 animate-pulse">
-                      ⚠ Total weight is {totalWeight}% — must equal exactly 100% to save. Please adjust sliders.
+                      Total weight is {totalWeight}% — must equal exactly 100% to save. Please adjust sliders.
                     </div>
                   )}
 

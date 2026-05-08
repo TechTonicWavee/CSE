@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Home, BookOpen, Bell, BarChart2, Users, CheckCircle, MessageCircle, FileText, Settings, LogOut, Search, ChevronDown, AlertTriangle, TrendingUp, Target, ExternalLink, Star, ChevronLeft, ChevronRight, AlertOctagon, User, Activity, Award, Grid, Zap, AlertCircle, Plug } from 'lucide-react'
+import { Home, BookOpen, Bell, BarChart2, Users, CheckCircle, MessageCircle, FileText, Settings, LogOut, Search, ChevronDown, AlertTriangle, TrendingUp, Target, ExternalLink, Star, ChevronLeft, ChevronRight, AlertOctagon, User, Activity, Award, Grid, Zap, AlertCircle, Plug, CheckCircle2, XCircle } from 'lucide-react'
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell,
   LineChart, Line, CartesianGrid, Dot
@@ -18,9 +18,8 @@ const navLinks = [
   { id: 'co',         label: 'CO Attainment',    icon: CheckCircle,badge: null,  active: false, path: '/dashboard/faculty/co-attainment' },
   { id: 'parent',     label: 'Parent Communication', icon: MessageCircle, badge: null, active: false, path: '/dashboard/faculty/parent-communication' },
   { id: 'reports',    label: 'Reports',          icon: FileText,   badge: null,  active: false, path: '/dashboard/faculty/reports' },
-  { id: 'assignments',label: 'Assignments (Moodle)', icon: BookOpen, badge: null, active: false, path: '/faculty/assignments' },
+  { id: 'assignments',label: 'Assignments (Moodle)', icon: BookOpen, badge: null, active: false, path: '/dashboard/faculty/my-classes' },
   { id: 'attendance', label: 'Attendance (Vidya)',   icon: CheckCircle,badge: null, active: false, path: '/faculty/attendance' },
-  { id: 'advisor',    label: 'AI Advisor',       icon: Search,     badge: null,  active: false, path: '/ai-advisor' },
 ]
 
 const scoreDistData = [
@@ -379,10 +378,10 @@ export default function SubjectAnalyticsPage() {
                         </td>
                         <td className="px-6 py-4">
                           <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-${row.statusColor}-50 text-${row.statusColor}-700 border border-${row.statusColor}-200`}>
-                            {row.status === 'Achieved' && '✅'}
-                            {row.status === 'Below Target' && '❌'}
-                            {row.status === 'Critical' && '❌'}
-                            {row.status === 'Close' && '⚠️'}
+                            {row.status === 'Achieved' && <CheckCircle2 size={12} className="text-green-600" />}
+                            {row.status === 'Below Target' && <XCircle size={12} className="text-red-600" />}
+                            {row.status === 'Critical' && <XCircle size={12} className="text-red-600" />}
+                            {row.status === 'Close' && <AlertTriangle size={12} className="text-amber-500" />}
                             {row.status}
                           </span>
                         </td>

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { LayoutDashboard, LineChart, BarChart2, Users, BookOpen, FileText, Settings, Bell, Search, ChevronDown, Download, CheckCircle2, TrendingUp, AlertTriangle, ArrowRight, XCircle, Calendar, Clock, UserCheck, Cpu, Home, User, Activity, Award, Grid, LogOut, Target, CheckCircle, Zap, AlertCircle, Plug } from 'lucide-react'
+import { Brain, LayoutDashboard, LineChart, BarChart2, Users, BookOpen, FileText, Settings, Bell, Search, ChevronDown, Download, CheckCircle2, TrendingUp, AlertTriangle, ArrowRight, XCircle, Calendar, Clock, UserCheck, Cpu, Home, User, Activity, Award, Grid, LogOut, Target, CheckCircle, Zap, AlertCircle, Plug } from 'lucide-react'
 import {
   PieChart, Pie, Cell, AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, 
   CartesianGrid, Legend, LineChart as RechartsLineChart, Line
@@ -15,24 +15,19 @@ const navLinks = [
   { id: 'forecast',   label: 'Cohort Forecasting',  icon: TrendingUp,badge: null,active: false, path: '/dashboard/dean/forecasting' },
   { id: 'curriculum', label: 'Curriculum Analysis', icon: BookOpen,badge: null,  active: false, path: '/dashboard/dean/curriculum' },
   { id: 'policy',     label: 'Policy Simulation',   icon: Activity,badge: null,  active: false, path: '/dashboard/dean/policy-simulation' },
-  { id: 'accredit',   label: 'Accreditation Reports',icon: FileText,badge: null, active: false, path: '/dashboard/dean/accreditation' },
-  { id: 'cross',      label: 'Cross-Branch Insights', icon: Target, badge: null, active: false, path: '/dashboard/dean/cross-branch' },
-  { id: 'advisor',    label: 'AI Advisor',       icon: Search,     badge: null,  active: false, path: '/ai-advisor' },
+  { id: 'reports',    label: 'Reports',             icon: FileText,   badge: null, active: false, path: '/dashboard/dean/reports' },
+  { id: 'cross',      label: 'Year-wise Insights', icon: Target, badge: null, active: false, path: '/dashboard/dean/cross-branch' },
+  { id: 'intelligence', label: 'Student Intelligence', icon: Brain, badge: null, active: false, path: '/dashboard/dean/student-intelligence' },
 ]
 
 const facultyData = [
   { id: 1, rank: 1, name: 'Dr. Anita Sharma', branch: 'CSE', subjects: 'Algorithms, DSA', students: 120, improvement: 14.2, co: 82, alerts: 4, score: 91, category: 'Exceptional' },
-  { id: 2, rank: 2, name: 'Prof. Priya Kapoor', branch: 'CSE', subjects: 'DBMS, OS', students: 243, improvement: 11.8, co: 74, alerts: 9, score: 87, category: 'High Performer' },
-  { id: 3, rank: 3, name: 'Dr. Suresh Iyer', branch: 'CSE', subjects: 'TOC, Computer Networks', students: 198, improvement: 10.3, co: 79, alerts: 7, score: 84, category: 'High Performer' },
-  { id: 4, rank: 4, name: 'Prof. Meena Rao', branch: 'IT', subjects: 'Web Tech, Software Engg', students: 210, improvement: 9.7, co: 77, alerts: 8, score: 81, category: 'High Performer' },
-  { id: 5, rank: 5, name: 'Dr. Ramesh Pillai', branch: 'ECE', subjects: 'Digital Electronics, VLSI', students: 186, improvement: 8.4, co: 71, alerts: 11, score: 76, category: 'Good' },
-  { id: 6, rank: 6, name: 'Prof. Kavya Nair', branch: 'CSE', subjects: 'Python Programming, AI', students: 175, improvement: 7.9, co: 69, alerts: 13, score: 73, category: 'Average' },
-  { id: 7, rank: 7, name: 'Dr. Prakash Joshi', branch: 'IT', subjects: 'Database Systems, Cloud', students: 162, improvement: 6.2, co: 66, alerts: 16, score: 68, category: 'Average' },
-  { id: 8, rank: 8, name: 'Prof. Dinesh Kumar', branch: 'ECE', subjects: 'Signals, Communication', students: 144, improvement: 4.1, co: 61, alerts: 21, score: 59, category: 'Needs Support' },
-  { id: 9, rank: 9, name: 'Dr. Lakshmi Priya', branch: 'IT', subjects: 'Mathematics, Statistics', students: 201, improvement: 3.8, co: 63, alerts: 19, score: 57, category: 'Needs Support' },
-  { id: 10, rank: 10, name: 'Prof. Arun Nair', branch: 'ECE', subjects: 'Microprocessors, Embedded', students: 133, improvement: 3.2, co: 58, alerts: 24, score: 54, category: 'Needs Support' },
-  { id: 11, rank: 11, name: 'Dr. Ravi Sharma', branch: 'CSE', subjects: 'Computer Architecture', students: 156, improvement: 2.9, co: 57, alerts: 22, score: 51, category: 'Critical Attention' },
-  { id: 12, rank: 12, name: 'Prof. Geeta Menon', branch: 'ECE', subjects: 'Analog Electronics', students: 128, improvement: 1.4, co: 52, alerts: 28, score: 43, category: 'Critical Attention' },
+  { id: 2, rank: 2, name: 'Prof. Priya Kapoor', branch: 'CSE', subjects: 'DBMS, OS', students: 118, improvement: 11.8, co: 74, alerts: 9, score: 87, category: 'High Performer' },
+  { id: 3, rank: 3, name: 'Dr. Suresh Iyer', branch: 'CSE', subjects: 'TOC, Computer Networks', students: 122, improvement: 10.3, co: 79, alerts: 7, score: 84, category: 'High Performer' },
+  { id: 4, rank: 4, name: 'Prof. Kavya Nair', branch: 'CSE', subjects: 'Python Programming, AI', students: 115, improvement: 7.9, co: 69, alerts: 13, score: 73, category: 'Average' },
+  { id: 5, rank: 5, name: 'Dr. Ravi Sharma', branch: 'CSE', subjects: 'Computer Architecture', students: 116, improvement: 2.9, co: 57, alerts: 22, score: 51, category: 'Critical Attention' },
+  { id: 6, rank: 6, name: 'Prof. Arjun Mehta', branch: 'CSE', subjects: 'Software Engineering, Cloud', students: 110, improvement: 5.4, co: 65, alerts: 14, score: 67, category: 'Average' },
+  { id: 7, rank: 7, name: 'Dr. Neha Gupta', branch: 'CSE', subjects: 'Data Structures, C Programming', students: 119, improvement: 8.1, co: 72, alerts: 10, score: 80, category: 'High Performer' },
 ]
 
 const pieData = [
@@ -43,11 +38,11 @@ const pieData = [
 ]
 
 const areaTrendData = [
-  { term: 'S1 2024', CSE: 71, IT: 66, ECE: 62 },
-  { term: 'S2 2024', CSE: 73, IT: 68, ECE: 63 },
-  { term: 'S1 2025', CSE: 75, IT: 70, ECE: 65 },
-  { term: 'S2 2025', CSE: 77, IT: 72, ECE: 67 },
-  { term: 'S1 2026', CSE: 79, IT: 74, ECE: 71 },
+  { term: 'S1 2024', CSE: 71 },
+  { term: 'S2 2024', CSE: 73 },
+  { term: 'S1 2025', CSE: 75 },
+  { term: 'S2 2025', CSE: 77 },
+  { term: 'S1 2026', CSE: 79 },
 ]
 
 const facultyImprovementChartData = [
@@ -102,20 +97,20 @@ export default function FacultyPerformanceDeepDive() {
       {/* ══════════════════════════════════
           SIDEBAR
       ══════════════════════════════════ */}
-      <aside className={`${sidebarOpen ? 'w-64' : 'w-0 overflow-hidden'} flex-shrink-0 bg-navy flex flex-col transition-all duration-300 shadow-xl z-20`}>
+      <aside className={`${sidebarOpen ? 'w-64' : 'w-0 overflow-hidden'} flex-shrink-0 bg-white border-r border-gray-100 flex flex-col transition-all duration-300 shadow-xl z-20`}>
         <div className="p-5 border-b border-white/10">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-navy font-bold text-sm flex-shrink-0 bg-white">DR</div>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center text-navy font-bold text-sm flex-shrink-0 bg-white">VS</div>
             <div className="overflow-hidden">
-              <p className="font-semibold text-sm text-white truncate">Dr. Rajesh Verma</p>
-              <p className="text-xs text-blue-200 truncate">Dean of Academics</p>
+              <p className="font-semibold text-sm text-navy truncate">Dr. Vineet Sharma</p>
+              <p className="text-xs text-gray-500 truncate">Dean of Academics</p>
             </div>
           </div>
         </div>
 
         <nav className="flex-1 p-3 overflow-y-auto">
           {navLinks.map(link => (
-            <button key={link.id} onClick={() => router.push(link.path)} className={`nav-link w-full text-left mb-0.5 ${activeNav === link.id ? 'bg-white/10 text-white font-semibold' : 'text-gray-300 hover:bg-white/5 hover:text-white'}`}>
+            <button key={link.id} onClick={() => router.push(link.path)} className={`nav-link w-full text-left mb-0.5 ${activeNav === link.id ? 'bg-purple-50 text-purple-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-navy'}`}>
               <link.icon size={17} />
               <span className="flex-1">{link.label}</span>
             </button>
@@ -145,7 +140,7 @@ export default function FacultyPerformanceDeepDive() {
             <Bell size={19} />
           </button>
           <div className="flex items-center gap-2 cursor-pointer group">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-navy font-bold text-xs bg-gray-200">DR</div>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-navy font-bold text-xs bg-gray-200">VS</div>
             <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
           </div>
         </header>
@@ -176,7 +171,7 @@ export default function FacultyPerformanceDeepDive() {
                 <div>
                   <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Total Faculty</p>
                   <p className="font-bold text-blue-600 text-4xl mb-1">48</p>
-                  <p className="text-xs text-gray-500">Across all branches</p>
+                  <p className="text-xs text-gray-500">CSE Department</p>
                 </div>
                 <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600"><Users size={24} /></div>
               </div>
@@ -354,14 +349,6 @@ export default function FacultyPerformanceDeepDive() {
                           <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.3}/>
                           <stop offset="95%" stopColor="#3B82F6" stopOpacity={0}/>
                         </linearGradient>
-                        <linearGradient id="colorIT" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#14B8A6" stopOpacity={0.3}/>
-                          <stop offset="95%" stopColor="#14B8A6" stopOpacity={0}/>
-                        </linearGradient>
-                        <linearGradient id="colorECE" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#A855F7" stopOpacity={0.3}/>
-                          <stop offset="95%" stopColor="#A855F7" stopOpacity={0}/>
-                        </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
                       <XAxis dataKey="term" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#6b7280' }} dy={10} />
@@ -369,15 +356,13 @@ export default function FacultyPerformanceDeepDive() {
                       <Tooltip contentStyle={{ borderRadius: '8px', border: '1px solid #e5e7eb', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
                       <Legend verticalAlign="top" height={36} wrapperStyle={{ fontSize: '12px', fontWeight: 'bold' }} />
                       <Area type="monotone" dataKey="CSE" stroke="#3B82F6" strokeWidth={2} fillOpacity={1} fill="url(#colorCSE)" />
-                      <Area type="monotone" dataKey="IT" stroke="#14B8A6" strokeWidth={2} fillOpacity={1} fill="url(#colorIT)" />
-                      <Area type="monotone" dataKey="ECE" stroke="#A855F7" strokeWidth={2} fillOpacity={1} fill="url(#colorECE)" />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
 
                 <div className="bg-green-50 border border-green-200 rounded-xl p-4 mt-auto">
                   <p className="text-green-800 text-sm font-medium leading-relaxed">
-                    All 3 branches show consistent faculty effectiveness improvement. ECE showed the biggest jump this semester (+4 points) after the new HOD introduced peer observation sessions.
+                    CSE department shows consistent faculty effectiveness improvement across all semesters. The upward trend follows the peer observation sessions and structured CO attainment reviews introduced from 2025.
                   </p>
                 </div>
               </div>
