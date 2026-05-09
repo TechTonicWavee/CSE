@@ -2,13 +2,14 @@
 
 import { useState } from 'react';
 import { useDeanContext } from '../_context/DeanContext';
+import { Bell, Bot, AlertTriangle, Calendar, Info } from 'lucide-react';
 
 const notificationIcons = {
-  reminder: '🔔',
-  agent: '🤖',
-  deadline: '⚠️',
-  update: '📅',
-  system: 'ℹ️',
+  reminder: <Bell className="w-6 h-6 text-blue-600" />,
+  agent: <Bot className="w-6 h-6 text-green-600" />,
+  deadline: <AlertTriangle className="w-6 h-6 text-red-600" />,
+  update: <Calendar className="w-6 h-6 text-amber-600" />,
+  system: <Info className="w-6 h-6 text-gray-600" />,
 };
 
 const notificationColors = {
@@ -75,7 +76,7 @@ export default function NotificationsPage() {
               onClick={() => !notif.read && markAsRead(notif.id)}
             >
               <div className="flex items-start gap-4 flex-1">
-                <span className="text-2xl">{notificationIcons[notif.type]}</span>
+                <div className="mt-1">{notificationIcons[notif.type]}</div>
                 <div className="flex-1">
                   <p className={`font-semibold ${!notif.read ? 'text-gray-900' : 'text-gray-600'}`}>
                     {notif.title}
