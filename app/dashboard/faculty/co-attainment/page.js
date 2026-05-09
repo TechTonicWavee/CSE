@@ -2,24 +2,23 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import {
-  Home, User, Activity, BookOpen, Bell, Settings, LogOut, Search,
-  ChevronDown, AlertTriangle, MessageSquare, Target, CheckCircle2,
-  Calendar, Clock, BookMarked, Download, XCircle, ChevronRight
-} from 'lucide-react'
+import { Home, User, Activity, BookOpen, Bell, Settings, LogOut, Search, ChevronDown, AlertTriangle, MessageSquare, Target, CheckCircle2, Calendar, Clock, BookMarked, Download, XCircle, ChevronRight, TrendingUp, Users, Award, Grid, FileText, CheckCircle, Zap, AlertCircle, Plug } from 'lucide-react'
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend, ReferenceLine
 } from 'recharts'
 
 const navLinks = [
-  { id: 'dashboard', label: 'Dashboard', icon: Home, badge: null, path: '/dashboard/faculty' },
-  { id: 'classes', label: 'My Classes', icon: BookOpen, badge: null, path: '/dashboard/faculty/my-classes' },
-  { id: 'alerts', label: 'Student Alerts', icon: Bell, badge: '5', path: '/dashboard/faculty/alerts' },
-  { id: 'analytics', label: 'Subject Analytics', icon: Activity, badge: null, path: '/dashboard/faculty/analytics' },
-  { id: 'profiles', label: 'Student Profiles', icon: User, badge: null, path: '/dashboard/faculty/student/profile' },
-  { id: 'co', label: 'CO Attainment', icon: Target, badge: null, path: '/dashboard/faculty/co-attainment' },
-  { id: 'parent', label: 'Parent Communication', icon: MessageSquare, badge: null, path: '/dashboard/faculty/parent-communication' },
-  { id: 'reports', label: 'Reports', icon: BookMarked, badge: null, path: '/dashboard/faculty/reports' },
+  { id: 'dashboard',  label: 'Dashboard',        icon: Home,       badge: null,  active: false, path: '/dashboard/faculty' },
+  { id: 'classes',    label: 'My Classes',       icon: BookOpen,   badge: null,  active: false, path: '/dashboard/faculty/my-classes' },
+  { id: 'intelligence',label: 'Student Intelligence',icon: Grid,     badge: null,  active: false, path: '/dashboard/faculty/student-intelligence' },
+  { id: 'alerts',     label: 'Student Alerts',   icon: AlertCircle,badge: '5',   active: false, path: '/dashboard/faculty/alerts' },
+  { id: 'analytics',  label: 'Subject Analytics',icon: Activity,   badge: null,  active: false, path: '/dashboard/faculty/analytics' },
+  { id: 'profiles',   label: 'Student Profiles', icon: Users,      badge: null,  active: false, path: '/dashboard/faculty/student/profile' },
+  { id: 'co',         label: 'CO Attainment',    icon: CheckCircle,badge: null,  active: true,  path: '/dashboard/faculty/co-attainment' },
+  { id: 'parent',     label: 'Parent Communication', icon: MessageSquare, badge: null, active: false, path: '/dashboard/faculty/parent-communication' },
+  { id: 'reports',    label: 'Reports',          icon: FileText,   badge: null,  active: false, path: '/dashboard/faculty/reports' },
+  { id: 'assignments',label: 'Assignments (Moodle)', icon: BookOpen, badge: null, active: false, path: null, external: 'http://lms.kiet.edu/moodle/' },
+  { id: 'attendance', label: 'Attendance (Vidya)',   icon: CheckCircle,badge: null, active: false, path: null, external: 'https://kiet.cybervidya.net' },
 ]
 
 const subjectData = {
@@ -131,7 +130,7 @@ export default function FacultyCOAttainment() {
               PK
             </div>
             <div className="overflow-hidden">
-              <p className="font-semibold text-sm text-navy truncate">Prof. Priya Kapoor</p>
+              <p className="font-semibold text-sm text-navy truncate">Prof. Pushpendra Kumar</p>
               <p className="text-xs text-gray-500 truncate">CSE Department · 4 Subjects</p>
             </div>
           </div>
@@ -142,8 +141,11 @@ export default function FacultyCOAttainment() {
             <button
               key={link.id}
               onClick={() => {
-                setActiveNav(link.id)
-                if (link.path) router.push(link.path)
+                if (link.external) { window.open(link.external, '_blank'); return; }; if (link.path) {
+                  router.push(link.path)
+                } else {
+                  if (typeof setActiveNav === 'function') setActiveNav(link.id)
+                }
               }}
               className={`nav-link w-full text-left mb-0.5 ${activeNav === link.id ? 'bg-teal-50 text-teal-700 font-semibold' : ''}`}
             >
@@ -229,8 +231,9 @@ export default function FacultyCOAttainment() {
                       const isGood = overall >= 75
 
                       const barClass = (pct) => {
-                        if (pct >= 75) return 'bg-teal-500'
-                        if (pct >= 65) return 'bg-amber-500'
+                        if (pct >= 75) return 'bg-green-500'
+                        if (pct >= 60) return 'bg-yellow-400'
+                        if (pct >= 45) return 'bg-blue-500'
                         return 'bg-red-500'
                       }
 
@@ -408,10 +411,10 @@ export default function FacultyCOAttainment() {
                   <div className="w-full lg:w-1/3 border border-gray-200 rounded-xl p-5 flex flex-col justify-center">
                     <p className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Overall {activeTab} CO Attainment</p>
                     <div className="flex items-end gap-2 mb-4">
-                      <span className={`text-5xl font-black ${currentData.overall >= 75 ? 'text-green-500' : 'text-amber-500'}`}>{currentData.overall}%</span>
+                      <span className={`text-5xl font-black ${currentData.overall >= 75 ? 'text-green-500' : currentData.overall >= 60 ? 'text-yellow-500' : currentData.overall >= 45 ? 'text-blue-500' : 'text-red-500'}`}>{currentData.overall}%</span>
                     </div>
                     <div className="h-3 w-full bg-gray-100 rounded-full overflow-hidden mb-3">
-                      <div className={`h-full rounded-full ${currentData.overall >= 75 ? 'bg-green-500' : 'bg-amber-500'}`} style={{ width: `${currentData.overall}%` }}></div>
+                      <div className={`h-full rounded-full ${currentData.overall >= 75 ? 'bg-green-500' : currentData.overall >= 60 ? 'bg-yellow-400' : currentData.overall >= 45 ? 'bg-blue-500' : 'bg-red-500'}`} style={{ width: `${currentData.overall}%` }}></div>
                     </div>
                     {currentData.gap > 0 ? (
                       <p className="text-sm font-bold text-amber-700 bg-amber-50 p-2 rounded inline-block w-fit">

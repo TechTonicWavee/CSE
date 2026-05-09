@@ -2,22 +2,21 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import {
-  LayoutDashboard, LineChart, BarChart2, Users, BookOpen, Settings, Bell, Search,
-  ChevronDown, Download, CheckCircle2, AlertTriangle, ArrowRight, XCircle, FileText, Cpu
-} from 'lucide-react'
+import { Brain, LayoutDashboard, LineChart, BarChart2, Users, BookOpen, Settings, Bell, Search, ChevronDown, Download, CheckCircle2, AlertTriangle, ArrowRight, XCircle, FileText, Cpu, Home, User, Activity, TrendingUp, Award, Grid, LogOut, Target, CheckCircle, Zap, AlertCircle, Plug } from 'lucide-react'
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell
 } from 'recharts'
 
 const navLinks = [
-  { id: 'department',  label: 'Department Overview',  icon: LayoutDashboard, path: '/dashboard/dean/department' },
-  { id: 'forecasting', label: 'Cohort Forecasting',   icon: LineChart,       path: '/dashboard/dean/forecasting' },
-  { id: 'cross-branch',label: 'Cross-Branch Insights',icon: BarChart2,       path: '/dashboard/dean/cross-branch' },
-  { id: 'faculty',     label: 'Faculty Analytics',    icon: Users,           path: '/dashboard/dean/faculty-performance' },
-  { id: 'curriculum',  label: 'Curriculum Gaps',      icon: BookOpen,        path: '/dashboard/dean/curriculum' },
-  { id: 'policy-simulation', label: 'Policy Simulation', icon: Cpu,             path: '/dashboard/dean/policy-simulation' },
-  { id: 'reports',     label: 'Reports',              icon: FileText,        path: '/dashboard/dean/reports' },
+  { id: 'dashboard',  label: 'Dashboard',        icon: Home,       badge: null,  active: true, path: '/dashboard/dean' },
+  { id: 'department', label: 'Department Overview', icon: Grid,    badge: null,  active: false, path: '/dashboard/dean/department' },
+  { id: 'faculty',    label: 'Faculty Performance', icon: Users,   badge: null,  active: false, path: '/dashboard/dean/faculty-performance' },
+  { id: 'forecast',   label: 'Cohort Forecasting',  icon: TrendingUp,badge: null,active: false, path: '/dashboard/dean/forecasting' },
+  { id: 'curriculum', label: 'Curriculum Analysis', icon: BookOpen,badge: null,  active: false, path: '/dashboard/dean/curriculum' },
+  { id: 'policy',     label: 'Policy Simulation',   icon: Activity,badge: null,  active: false, path: '/dashboard/dean/policy-simulation' },
+  { id: 'reports',    label: 'Reports',             icon: FileText,   badge: null, active: false, path: '/dashboard/dean/reports' },
+  { id: 'cross',      label: 'Year-wise Insights', icon: Target, badge: null, active: false, path: '/dashboard/dean/cross-branch' },
+  { id: 'intelligence', label: 'Student Intelligence', icon: Brain, badge: null, active: false, path: '/dashboard/dean/student-intelligence' },
 ]
 
 const heatmapData = [
@@ -136,9 +135,9 @@ const gap2Data = [
 
 const initialPlan = [
   { id: 1, priority: 'P1', change: 'Introduce real-world examples before Normalization theory', subject: 'DBMS', branches: 'All', effort: 'Low', impact: '-15%', status: 'Pending Approval', statusColor: 'bg-amber-100 text-amber-800 border-amber-200' },
-  { id: 2, priority: 'P2', change: 'Add regex visualizer tools to TOC curriculum', subject: 'TOC', branches: 'CSE, IT', effort: 'Low', impact: '-18%', status: 'In Review', statusColor: 'bg-blue-100 text-blue-800 border-blue-200' },
+  { id: 2, priority: 'P2', change: 'Add regex visualizer tools to TOC curriculum', subject: 'TOC', branches: 'CSE', effort: 'Low', impact: '-18%', status: 'In Review', statusColor: 'bg-blue-100 text-blue-800 border-blue-200' },
   { id: 3, priority: 'P3', change: 'Scheduling algorithm simulator in OS lab', subject: 'OS', branches: 'All', effort: 'Medium', impact: '-17%', status: 'Pending Approval', statusColor: 'bg-amber-100 text-amber-800 border-amber-200' },
-  { id: 4, priority: 'P4', change: 'DP problem sets with step-by-step worked examples', subject: 'DSA', branches: 'CSE, IT', effort: 'Low', impact: '-12%', status: 'Not Started', statusColor: 'bg-gray-100 text-gray-800 border-gray-200' },
+  { id: 4, priority: 'P4', change: 'DP problem sets with step-by-step worked examples', subject: 'DSA', branches: 'CSE', effort: 'Low', impact: '-12%', status: 'Not Started', statusColor: 'bg-gray-100 text-gray-800 border-gray-200' },
   { id: 5, priority: 'P5', change: 'Discrete math prerequisite check before TOC', subject: 'TOC', branches: 'All', effort: 'High', impact: '-11%', status: 'Under Discussion', statusColor: 'bg-purple-100 text-purple-800 border-purple-200' },
   { id: 6, priority: 'P6', change: 'Real-world pipelining demos using CPU-Z tool', subject: 'Computer Architecture', branches: 'All', effort: 'Medium', impact: '-9%', status: 'Not Started', statusColor: 'bg-gray-100 text-gray-800 border-gray-200' },
   { id: 7, priority: 'P7', change: 'Statistics module refresher before ML courses', subject: 'Mathematics', branches: 'All', effort: 'Medium', impact: '-14%', status: 'Not Started', statusColor: 'bg-gray-100 text-gray-800 border-gray-200' },
@@ -167,60 +166,8 @@ export default function CurriculumGapAnalysis() {
   }
 
   return (
-    <div className="flex h-screen bg-bg-base overflow-hidden font-sans relative">
-      {/* ══════════════════════════════════
-          SIDEBAR
-      ══════════════════════════════════ */}
-      <aside className={`${sidebarOpen ? 'w-64' : 'w-0 overflow-hidden'} flex-shrink-0 bg-navy flex flex-col transition-all duration-300 shadow-xl z-20`}>
-        <div className="p-5 border-b border-white/10">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-navy font-bold text-sm flex-shrink-0 bg-white">DR</div>
-            <div className="overflow-hidden">
-              <p className="font-semibold text-sm text-white truncate">Dr. Rajesh Verma</p>
-              <p className="text-xs text-blue-200 truncate">Dean of Academics</p>
-            </div>
-          </div>
-        </div>
-
-        <nav className="flex-1 p-3 overflow-y-auto">
-          {navLinks.map(link => (
-            <button key={link.id} onClick={() => router.push(link.path)} className={`nav-link w-full text-left mb-0.5 ${activeNav === link.id ? 'bg-white/10 text-white font-semibold' : 'text-gray-300 hover:bg-white/5 hover:text-white'}`}>
-              <link.icon size={17} />
-              <span className="flex-1">{link.label}</span>
-            </button>
-          ))}
-        </nav>
-      </aside>
-
-      {/* ══════════════════════════════════
-          MAIN CONTENT
-      ══════════════════════════════════ */}
-      <div className="flex-1 flex flex-col overflow-hidden relative">
-        {/* TOP NAV */}
-        <header className="bg-white border-b border-gray-100 px-6 py-3 flex items-center gap-4 flex-shrink-0 shadow-sm z-10">
-          <button onClick={() => setSidebarOpen(v => !v)} className="text-gray-400 hover:text-gray-700 transition">
-            <Settings size={20} />
-          </button>
-          <div className="flex items-center gap-2 mr-4">
-            <div className="w-7 h-7 rounded-md flex items-center justify-center text-white font-bold text-xs" style={{ background: '#4F46E5' }}>EA</div>
-            <span className="font-bold text-navy text-sm hidden sm:block">Educator Analytics OS</span>
-          </div>
-          <div className="flex-1 max-w-md relative">
-            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-            <input type="text" placeholder="Search curriculum topics..." className="w-full pl-9 pr-4 py-2 text-sm rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition" />
-          </div>
-          <div className="flex-1" />
-          <button className="relative p-2 rounded-lg hover:bg-gray-100 transition text-gray-500">
-            <Bell size={19} />
-          </button>
-          <div className="flex items-center gap-2 cursor-pointer group">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-navy font-bold text-xs bg-gray-200">DR</div>
-            <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition" />
-          </div>
-        </header>
-
-        {/* PAGE BODY */}
-        <main className="flex-1 overflow-y-auto bg-gray-50/50">
+    <>
+    <main className="px-8 py-8">
           <div className="max-w-[1400px] mx-auto p-6 md:p-8 animate-fade-in space-y-8 pb-20">
             
             {/* Header */}
@@ -349,7 +296,7 @@ export default function CurriculumGapAnalysis() {
                   <div className="lg:col-span-8">
                     <div className="flex items-center gap-4 mb-6">
                       <span className="px-3 py-1 bg-gray-100 text-gray-700 font-bold text-xs rounded-md">Subject: DBMS</span>
-                      <span className="text-sm font-bold text-red-600 bg-red-50 px-3 py-1 rounded-md">58% average fail rate across 3 years and 3 branches</span>
+                      <span className="text-sm font-bold text-red-600 bg-red-50 px-3 py-1 rounded-md">58% average fail rate across 3 years</span>
                     </div>
 
                     <h4 className="font-bold text-navy text-sm mb-3">Why it's failing:</h4>
@@ -509,7 +456,7 @@ export default function CurriculumGapAnalysis() {
                 <div className="p-5">
                   <div className="flex items-center gap-4 mb-4">
                     <span className="px-2.5 py-1 bg-gray-100 text-gray-700 font-bold text-[10px] rounded uppercase">Subject: OS</span>
-                    <span className="text-xs font-bold text-red-600">55% average across branches</span>
+                    <span className="text-xs font-bold text-red-600">55% average across CSE years</span>
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -610,7 +557,6 @@ export default function CurriculumGapAnalysis() {
 
           </div>
         </main>
-      </div>
 
       {/* TOAST */}
       {toastMessage && (
@@ -620,6 +566,6 @@ export default function CurriculumGapAnalysis() {
         </div>
       )}
 
-    </div>
+    </>
   )
 }
