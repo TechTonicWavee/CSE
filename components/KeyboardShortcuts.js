@@ -68,14 +68,6 @@ export function KeyboardShortcutProvider({ children }) {
     <KeyboardShortcutContext.Provider value={{ setShowModal }}>
       {children}
 
-      {/* Floating ? button */}
-      <button
-        onClick={() => setShowModal(true)}
-        className="fixed bottom-4 left-4 z-40 w-8 h-8 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:text-navy hover:bg-gray-50 shadow-sm transition-all print:hidden"
-        title="Keyboard Shortcuts (?)"
-      >
-        <span className="font-semibold text-sm">?</span>
-      </button>
 
       {/* Shortcuts Modal */}
       {showModal && (
