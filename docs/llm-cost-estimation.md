@@ -11,7 +11,7 @@
 > **Institution Baseline**
 > The following baseline metrics are used for all calculations in this document:
 > - **Students:** 8,000
-> - **Faculty members:** 45
+> - **Faculty members:** 200
 > - **Active days/month:** 22
 > - **AI frequency:** Medium (1.0x multiplier)
 
@@ -19,15 +19,15 @@
 
 ## Executive Summary
 
-This report provides a comprehensive estimate of the LLM API costs for the Educator Analytics OS platform, based on a baseline institution size of 8,000 students and 45 faculty members with realistic Daily Active User (DAU) rates applied. The total estimated monthly LLM cost is just **$14.50**. This highly optimized figure is the result of a trimmed 20-feature set across 3 active dashboards, two-tier Haiku/Sonnet routing, and intelligent rate limiting on high-volume background tasks like Career Path and Placement Readiness recalculations. At an operational cost of **$0.0018 per student per month**, the platform runs its full AI feature set for less than the cost of a single SMS per student per month. 
+This report provides a comprehensive estimate of the LLM API costs for the Educator Analytics OS platform, based on a baseline institution size of 8,000 students and 200 faculty members with realistic Daily Active User (DAU) rates applied. The total estimated monthly LLM cost is just **$33.64**. This highly optimized figure is the result of a trimmed 20-feature set across 3 active dashboards, two-tier Haiku/Sonnet routing, and intelligent rate limiting on high-volume background tasks like Career Path and Placement Readiness recalculations. At an operational cost of **$0.0042 per student per month**, the platform runs its full AI feature set for less than the cost of a single SMS per student per month. 
 
 | Dashboard | Monthly Cost | % of Total | Primary Cost Driver |
 | :--- | :--- | :--- | :--- |
-| Faculty | $5.58 | 38.48% | Individual Student Narrative |
-| Student | $7.76 | 53.52% | Skill Gap Analysis |
-| Dean | $1.17 | 8.00% | Department Health Summary |
+| Faculty | $24.71 | 73.45% | Individual Student Narrative |
+| Student | $7.76 | 23.07% | Skill Gap Analysis |
+| Dean | $1.17 | 3.48% | Department Health Summary |
 | Parent | $0.00 | 0.00% | No AI features in current scope |
-| **Total** | **$14.50** | **100.00%** | — |
+| **Total** | **$33.64** | **100.00%** | — |
 
 ---
 
@@ -47,7 +47,7 @@ This report provides a comprehensive estimate of the LLM API costs for the Educa
 > [!NOTE]
 > **Daily Active Users (DAU):**
 > - **Students:** 25% DAU rate (2,000 of 8,000 active on any given day)
-> - **Faculty:** 60% DAU rate (27 of 45 active on any given day)
+> - **Faculty:** 60% DAU rate (120 of 200 active on any given day)
 > - **Batch jobs:** run for all enrolled students regardless of DAU
 > - **Scheduled:** weekly features expressed as daily_rate = weekly_calls ÷ 7
 
@@ -76,17 +76,17 @@ Haiku Cost per call = ((Input × $0.80) + (Output × $4.00)) / 1,000,000
 
 ## Faculty Dashboard Cost Breakdown
 
-The Faculty Dashboard utilizes AI to reduce administrative burden and provide deep insights into student performance. Profile-specific tools scale efficiently with the 45 active faculty members.
+The Faculty Dashboard utilizes AI to reduce administrative burden and provide deep insights into student performance. Profile-specific tools scale efficiently with the 200 faculty members (120 active daily).
 
 | Feature | Trigger | Input Tokens | Output Tokens | Calls/Day | Cost/Day | Cost/Month |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Student Intelligence Insights | Page load / section refresh | 2,800 | 600 | 5 | $0.02 | $0.51 |
-| Individual Student Narrative | Per student profile open | 3,200 | 900 | 8 | $0.18 | $4.07 |
-| CO Attainment Analysis | Per subject per week | 1,800 | 500 | 2 | $0.01 | $0.15 |
-| Parent Visit Report | Per parent visit | 2,400 | 1,100 | 1 | $0.02 | $0.52 |
-| Curriculum Gap Detection | Weekly batch | 4,200 | 1,200 | 0.2 | $0.01 | $0.13 |
-| Report Generation | Per report generated | 3,800 | 1,500 | 1 | $0.01 | $0.20 |
-| **FACULTY TOTAL** | | | | | **$0.25** | **$5.58** |
+| Student Intelligence Insights | Page load / section refresh | 2,800 | 600 | 22 | $0.10 | $2.25 |
+| Individual Student Narrative | Per student profile open | 3,200 | 900 | 36 | $0.83 | $18.30 |
+| CO Attainment Analysis | Per subject per week | 1,800 | 500 | 9 | $0.03 | $0.68 |
+| Parent Visit Report | Per parent visit | 2,400 | 1,100 | 4 | $0.09 | $2.09 |
+| Curriculum Gap Detection | Weekly batch | 4,200 | 1,200 | 0.9 | $0.03 | $0.61 |
+| Report Generation | Per report generated | 3,800 | 1,500 | 4 | $0.04 | $0.80 |
+| **FACULTY TOTAL** | | | | | **$1.12** | **$24.71** |
 
 ```text
 Cost per call = ((Input tokens × $3.00) + (Output tokens × $15.00)) / 1,000,000
@@ -133,7 +133,6 @@ The Dean Dashboard features institution-level reporting. Because it is only acce
 
 *\*Cost per day is functionally negligible.*
 
-
 ---
 
 ## 12-Month Cost Projection
@@ -145,18 +144,18 @@ Assuming compounding adoption growth:
 
 | Month | Faculty | Student | Dean | Total |
 | :--- | :--- | :--- | :--- | :--- |
-| Month 1 | $5.58 | $7.76 | $1.17 | **$14.50** |
-| Month 2 | $5.75 | $8.14 | $1.18 | **$15.07** |
-| Month 3 | $5.92 | $8.55 | $1.19 | **$15.66** |
-| Month 4 | $6.10 | $8.98 | $1.20 | **$16.28** |
-| Month 5 | $6.28 | $9.43 | $1.21 | **$16.92** |
-| Month 6 | $6.47 | $9.90 | $1.22 | **$17.59** |
-| Month 7 | $6.66 | $10.40 | $1.23 | **$18.29** |
-| Month 8 | $6.86 | $10.92 | $1.24 | **$19.02** |
-| Month 9 | $7.07 | $11.47 | $1.25 | **$19.79** |
-| Month 10 | $7.28 | $12.04 | $1.26 | **$20.58** |
-| Month 11 | $7.50 | $12.64 | $1.27 | **$21.41** |
-| Month 12 | $7.73 | $13.27 | $1.28 | **$22.28** |
+| Month 1 | $24.71 | $7.76 | $1.17 | **$33.64** |
+| Month 2 | $25.45 | $8.15 | $1.18 | **$34.78** |
+| Month 3 | $26.21 | $8.56 | $1.19 | **$35.96** |
+| Month 4 | $27.00 | $8.99 | $1.20 | **$37.19** |
+| Month 5 | $27.81 | $9.44 | $1.21 | **$38.46** |
+| Month 6 | $28.64 | $9.91 | $1.22 | **$39.77** |
+| Month 7 | $29.50 | $10.41 | $1.23 | **$41.14** |
+| Month 8 | $30.39 | $10.93 | $1.24 | **$42.56** |
+| Month 9 | $31.30 | $11.48 | $1.25 | **$44.03** |
+| Month 10 | $32.24 | $12.05 | $1.26 | **$45.55** |
+| Month 11 | $33.21 | $12.65 | $1.27 | **$47.13** |
+| Month 12 | $34.21 | $13.28 | $1.28 | **$48.77** |
 
 ---
 
@@ -164,11 +163,11 @@ Assuming compounding adoption growth:
 
 | Optimization | Saving % | Monthly Saving ($) | Complexity |
 | :--- | :--- | :--- | :--- |
-| Prompt Caching (partially reflected in Tier 2 routing) | 30% on input | $1.49 | Low |
+| Prompt Caching (partially reflected in Tier 2 routing) | 30% on input | $3.85 | Low |
 | Career Path Cache | Already Implemented via rate limit | $0.00 | Low |
 | Lazy Dean Load | 40% on Dean | $0.47 | Low |
-| Token Budget Enforcement | 12.5% overall | $1.81 | Medium |
-| **Total Potential Saving** | | **$3.77 / month** | |
+| Token Budget Enforcement | 12.5% overall | $4.21 | Medium |
+| **Total Potential Saving** | | **$8.53 / month** | |
 
 ---
 
